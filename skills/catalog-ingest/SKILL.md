@@ -30,25 +30,29 @@ columns. Never silently overwrite source data.
 ## Core workflow
 
 1. **Preserve raw files.** Do not edit source exports in place.
-2. **Inventory the data room.** Build a file map with path, source, file type,
+2. **Confirm the deal workspace.** Use the convention in
+   `references/deal-workspace.md` when no workspace exists.
+3. **Inventory the data room.** Build a file map with path, source, file type,
    period, currency, likely rights type, and confidence.
-3. **Classify each source.** Use financial, legal, metadata, asset, analytics,
+4. **Classify each source.** Use financial, legal, metadata, asset, analytics,
    or unknown.
-4. **Profile spreadsheets before cleaning.** Check grain, keys, null rates,
+5. **Profile spreadsheets before cleaning.** Check grain, keys, null rates,
    duplicates, date ranges, mixed types, identifier formats, and split totals.
-5. **Propose fixes before destructive cleanup.** Show the issue, count, and
+6. **Propose fixes before destructive cleanup.** Show the issue, count, and
    planned fix. Ask before removing rows, overwriting values, or deduplicating.
-6. **Build the canonical catalog table.** Match recordings and compositions
+7. **Build the canonical catalog table.** Match recordings and compositions
    using ISRC, ISWC, title, writer, artist, release, and alternate-title clues.
-7. **Normalize royalty statements.** Convert every statement into ledger rows
+8. **Normalize royalty statements.** Convert every statement into ledger rows
    with source, period, asset, right type, territory, gross, deductions,
-   participant shares, owner net, and source lineage.
-8. **Build the rights map.** Link songs and recordings to contracts,
+   participant shares, owner net, and source lineage. For supported CSV exports,
+   use `scripts/normalize-royalty-statement.py`; see
+   `references/normalization.md`.
+9. **Build the rights map.** Link songs and recordings to contracts,
    registrations, splits, controlled shares, restrictions, and missing support.
-9. **Reconcile and flag exceptions.** Separate financial facts from rights
+10. **Reconcile and flag exceptions.** Separate financial facts from rights
    certainty. A royalty line proves money was reported; it does not prove clean
    transferable ownership.
-10. **Export the ingest package.** Include canonical tables, source lineage,
+11. **Export the ingest package.** Include canonical tables, source lineage,
     data-quality notes, and missing-file tracker.
 
 ## Output contract
@@ -99,3 +103,7 @@ Detailed schemas are in
   **[references/canonical-schema.md](references/canonical-schema.md)**.
 - For cleanup rules and review tables, read
   **[references/cleaning-rules.md](references/cleaning-rules.md)**.
+- For deal workspace structure, read
+  **[../../references/deal-workspace.md](../../references/deal-workspace.md)**.
+- For provider CSV normalization, read
+  **[../../references/normalization.md](../../references/normalization.md)**.

@@ -1,0 +1,39 @@
+{
+  "name": "music-catalog-deal-review",
+  "version": "0.1.0",
+  "description": "Music catalog deal review with data-room ingestion, royalty normalization, rights checks, and valuation analysis.",
+  "author": {
+    "name": "Recoupable",
+    "email": "agent@recoupable.com",
+    "url": "https://recoupable.com"
+  },
+  "homepage": "https://recoupable.com",
+  "repository": "https://github.com/recoupable/music-catalog-deal-review",
+  "license": "Apache-2.0",
+  "keywords": [
+    "music",
+    "catalogs",
+    "deal-review",
+    "royalties",
+    "music-rights",
+    "data-room",
+    "valuation",
+    "diligence",
+    "seller-prep",
+    "financing",
+    "chain-of-title",
+    "royalty-audit",
+    "agent-skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Music Catalog Deal Review",
+    "shortDescription": "Music catalog deal review and valuation skills for AI agents",
+    "longDescription": "Turn messy catalog data rooms into source-cited deal packages with normalized royalty data, rights exceptions, valuation workpapers, and buyer, seller, or lender-ready memos.",
+    "developerName": "Recoupable",
+    "category": "Music",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://recoupable.com",
+    "brandColor": "#345A5D"
+  }
+}

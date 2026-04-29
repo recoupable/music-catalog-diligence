@@ -52,6 +52,12 @@ files needed.
 10. **Write the memo.** Lead with value range, normalized cash flow, key risks,
     missing diligence, and recommended holdbacks or haircuts.
 
+Run deterministic scripts from `scripts/` when the required files exist:
+
+- `calculate-concentration.py` for song, platform, territory, and source risk.
+- `calculate-nps-nls-bridge.py` for reported-to-normalized cash-flow bridges.
+- `validate-evidence-ledger.py` before relying on memo citations.
+
 ## Required bridge
 
 Always show a bridge from reported royalties to underwritable earnings:
@@ -121,3 +127,5 @@ Templates and memo structure are in
   **[references/pro-performance-income.md](references/pro-performance-income.md)**.
 - For memo and table formats, read
   **[references/output-templates.md](references/output-templates.md)**.
+- For workspace-level evidence rules, read
+  **[../../references/deal-workspace.md](../../references/deal-workspace.md)**.
