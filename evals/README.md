@@ -16,3 +16,21 @@ Use these scenarios to test whether the plugin improves diligence behavior.
 
 Each scenario file describes a realistic pressure case. Future iterations can
 add fixture files under the same scenario folder.
+
+## Scenario assets
+
+Turn a scenario into a repeatable test by adding a folder with the same id under
+`fixtures/scenarios/`. Keep each folder small enough to review by hand:
+
+```text
+fixtures/scenarios/{scenario-id}/
+├── source/
+├── normalized/
+├── findings/
+├── workpapers/
+├── evidence-ledger.json
+└── expected-behavior.md
+```
+
+Use synthetic data only. The fixture should prove the behavior named in the
+scenario, not recreate a full real data room.

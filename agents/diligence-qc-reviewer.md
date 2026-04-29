@@ -1,4 +1,5 @@
 ---
+name: diligence-qc-reviewer
 description: Performs final quality control on a music catalog diligence package before it is shared with an IC, buyer, lender, seller, or counsel. Checks evidence, assumptions, findings, and unsupported claims.
 tools:
   - Read
@@ -24,10 +25,43 @@ lead. Prioritize unsupported claims and hidden risk.
 
 ## Output
 
-Return:
+Return JSON only:
 
-- `overall_status`: `ready`, `ready_with_caveats`, or `blocked`.
-- `blockers`.
-- `unsupported_claims`.
-- `missing_caveats`.
-- `recommended_fixes`.
+```json
+{
+  "overall_status": "ready | ready_with_caveats | blocked",
+  "blockers": [
+    {
+      "severity": "P0 | P1",
+      "issue": "What prevents sharing or requires explicit disclosure",
+      "evidence_needed": "Specific evidence, file, or workpaper needed",
+      "recommended_fix": "Specific action to resolve or disclose"
+    }
+  ],
+  "unsupported_claims": [
+    {
+      "claim": "Material claim from the memo or package",
+      "location": "Memo section, line, or artifact name",
+      "required_support": "Evidence or assumption label needed"
+    }
+  ],
+  "missing_caveats": [
+    {
+      "topic": "Area that needs caveat language",
+      "why_it_matters": "Deal risk created by omitting the caveat",
+      "suggested_caveat": "Plain-English caveat to add"
+    }
+  ],
+  "recommended_fixes": [
+    {
+      "priority": "P0 | P1 | P2",
+      "owner": "diligence | rights | royalty | valuation | seller | counsel",
+      "action": "Concrete next action"
+    }
+  ]
+}
+```
+
+Use `blocked` when any P0 issue remains. Use `ready_with_caveats` when P1/P2
+issues are disclosed but not resolved. Use `ready` only when material claims are
+supported and no high-severity open findings are hidden.

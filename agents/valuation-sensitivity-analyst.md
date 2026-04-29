@@ -1,4 +1,5 @@
 ---
+name: valuation-sensitivity-analyst
 description: Reviews music catalog valuation assumptions, NPS/NLS bridges, concentration, decay, recoupment, reserves, and downside/base/upside scenarios. Use for isolated valuation stress testing.
 tools:
   - Read

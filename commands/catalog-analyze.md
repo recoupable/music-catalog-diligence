@@ -10,11 +10,13 @@ needed.
 
 Steps:
 
-1. Validate the deal workspace.
+1. Run `python3 scripts/run-diligence-checks.py deals/{deal-id}`.
 2. Confirm whether analysis is for buy-side acquisition, seller prep, or
    financing.
 3. Compute or review normalized NPS/NLS.
-4. Run concentration and bridge scripts when available.
+4. Run `python3 scripts/calculate-concentration.py` and
+   `python3 scripts/calculate-nps-nls-bridge.py` when normalized inputs are
+   available.
 5. Launch specialist agents for rights, royalty, and valuation review when the
    deal is material.
 6. Write workpapers and findings before drafting memos.

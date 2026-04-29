@@ -21,6 +21,9 @@ CASES = [
     ("bmi-performance", "bmi"),
     ("mlc-mechanical", "mlc"),
     ("distributor-master", "distributor"),
+    ("publisher-admin", "publisher-admin"),
+    ("soundexchange", "soundexchange"),
+    ("direct-sync", "direct-sync"),
     ("youtube-content-id", "youtube-content-id"),
     ("curve-income", "curve"),
 ]

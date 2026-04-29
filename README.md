@@ -1,4 +1,4 @@
-# Music Catalog Deal Review Plugin
+# Music Catalog Diligence Plugin
 
 Agent plugin for music catalog acquisition, seller preparation, financing
 underwriting, royalty normalization, rights checks, and valuation analysis.
@@ -25,6 +25,7 @@ valuation workpapers, and buyer/seller/lender-ready memos.
 
 | Command | Purpose |
 | ------- | ------- |
+| `catalog-diligence` | Run the end-to-end workflow from setup through package readiness. |
 | `catalog-kickoff` | Start a deal workspace and route the work. |
 | `catalog-ingest` | Normalize a data room into source-cited artifacts. |
 | `catalog-analyze` | Run catalog analysis, workpapers, and specialist review. |
@@ -52,10 +53,12 @@ and memos.
 ## Structure
 
 ```text
-music-catalog-deal-review/
+music-catalog-diligence/
 ├── .claude-plugin/
 │   └── plugin.json
 ├── .codex-plugin/
+│   └── plugin.json
+├── .cursor-plugin/
 │   └── plugin.json
 ├── agents/
 ├── commands/
@@ -67,8 +70,9 @@ music-catalog-deal-review/
 └── README.md
 ```
 
-Claude Code loads the full plugin surface, including skills, commands, and
-agents. Codex loads the bundled skills through `.codex-plugin/plugin.json`.
+Claude Code and Cursor load the full plugin surface, including skills,
+commands, and agents. Codex loads the bundled skills through
+`.codex-plugin/plugin.json`.
 
 ## Development
 
@@ -76,14 +80,23 @@ Keep each skill focused and self-contained. Use `references/` for detailed
 domain material so each `SKILL.md` stays easy to scan. Use `scripts/` for
 deterministic checks that should not depend on prose reasoning.
 
-Current scripts include validators, concentration/bridge calculators, and
-`normalize-royalty-statement.py` for first-pass ASCAP, BMI, MLC, distributor,
-publisher admin, SoundExchange, direct sync, YouTube Content ID, and
-Curve-style CSV normalization.
+Current scripts include validators, readiness dashboard generation,
+concentration/bridge calculators, and `normalize-royalty-statement.py` for
+first-pass ASCAP, BMI, MLC, distributor, publisher admin, SoundExchange, direct
+sync, YouTube Content ID, and Curve-style CSV normalization.
 
-Golden fixtures live under `fixtures/golden/`. Run
-`python3 scripts/test-golden-fixtures.py` to compare provider-shaped fixture
-inputs against exact expected `royalty-ledger.csv` outputs.
+Golden fixtures live under `fixtures/golden/`. Run these checks before release:
+
+```bash
+python3 scripts/test-normalize-royalty-statement.py
+python3 scripts/test-golden-fixtures.py
+python3 scripts/test-validate-deal-workspace.py
+python3 scripts/test-diligence-readiness.py
+```
+
+Use `python3 scripts/run-diligence-checks.py deals/{deal-id}` to validate a
+workspace and `python3 scripts/build-diligence-dashboard.py deals/{deal-id}` to
+generate a shareable readiness summary.
 
 ## About
 

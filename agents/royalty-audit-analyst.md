@@ -1,4 +1,5 @@
 ---
+name: royalty-audit-analyst
 description: Audits normalized music royalty ledgers and royalty workpapers for completeness, gross-to-net issues, duplicate imports, timing errors, PRO/MLC anomalies, and NPS/NLS support.
 tools:
   - Read

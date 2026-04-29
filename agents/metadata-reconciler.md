@@ -1,4 +1,5 @@
 ---
+name: metadata-reconciler
 description: Reconciles music catalog metadata across track lists, royalty statements, registrations, identifiers, and analytics exports. Use when ISRC, ISWC, UPC, title, writer, publisher, or split data conflicts.
 tools:
   - Read
