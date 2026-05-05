@@ -25,6 +25,16 @@ CHECKS = [
         "validate-evidence-ledger.py",
         lambda workspace: [workspace / "evidence-ledger.json"],
     ),
+    (
+        "findings_evidence",
+        "validate-findings-evidence.py",
+        lambda workspace: [workspace],
+    ),
+    (
+        "workspace_consistency",
+        "validate-workspace-consistency.py",
+        lambda workspace: [workspace],
+    ),
 ]
 
 

@@ -32,7 +32,7 @@ Return JSON only:
   "overall_status": "ready | ready_with_caveats | blocked",
   "blockers": [
     {
-      "severity": "P0 | P1",
+      "severity": "critical | high",
       "issue": "What prevents sharing or requires explicit disclosure",
       "evidence_needed": "Specific evidence, file, or workpaper needed",
       "recommended_fix": "Specific action to resolve or disclose"
@@ -62,6 +62,12 @@ Return JSON only:
 }
 ```
 
-Use `blocked` when any P0 issue remains. Use `ready_with_caveats` when P1/P2
-issues are disclosed but not resolved. Use `ready` only when material claims are
-supported and no high-severity open findings are hidden.
+Severity uses the same vocabulary as `findings/findings.json` and
+`references/red-flags.md`: `critical | high | medium | low`. `priority` on a
+recommended fix is a separate axis (urgency of the action) and uses
+`P0 | P1 | P2`.
+
+Use `blocked` when any open `critical` finding remains. Use
+`ready_with_caveats` when `high` issues are disclosed but not resolved. Use
+`ready` only when material claims are supported and no `critical` or `high`
+open findings are hidden.

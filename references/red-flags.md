@@ -13,6 +13,55 @@ haircut, escrow, holdback, or walk away.
 | Medium | Important uncertainty that affects confidence. | Model sensitivity or require follow-up. |
 | Low | Cleanup issue with limited value impact. | Track in post-close or seller-prep list. |
 
+## Severity calibration
+
+Anchor severity in measurable factors before assigning a tier. Pick the
+worst-applicable factor; bump severity one tier when two or more factors
+land in the same column. `revenue_threshold` refers to
+`materiality.revenue_threshold` in `assumptions.yaml`.
+
+| Factor | Low | Medium | High | Critical |
+| --- | --- | --- | --- | --- |
+| Cumulative $ at risk vs `revenue_threshold` | <1× | 1×–10× | 10×–100× | >100× |
+| Duration of mispayment or exposure | <1 yr | 1–5 yr | 5–15 yr | >15 yr or ongoing |
+| % of catalog revenue affected | <1% | 1–10% | 10–25% | >25% |
+| Title transferability impact | none | partial / curable | one asset blocked | catalog-wide block |
+| Number of affected income-generating assets | 1 | 2–5 | 6–20 | >20 |
+
+Optionally record the rationale on the finding itself:
+
+```json
+{
+  "severity": "high",
+  "severity_factors": {
+    "dollars_at_risk_vs_threshold": "10x-100x",
+    "duration_years": 14,
+    "pct_revenue_affected": "5-10",
+    "transferability_impact": "one_asset",
+    "affected_asset_count": 1,
+    "calibration_note": "Duration alone places this in High."
+  }
+}
+```
+
+### Worked examples
+
+- `SPLIT-02` — 14 years of mechanical mispayment on `Don't Stop Now`
+  (Vega vs. Doré split sheet 75/25 vs. registrations 70/30). Duration is
+  5–15 years, so duration alone is **High**. Dollar impact and asset count
+  are Medium. Final severity: **High**.
+- `SAMP-01` — uncleared 6-second sample on the catalog's top-earning song,
+  open demand letter from 2019. Duration is ongoing, transferability impact
+  is "one asset blocked," and the asset is the largest revenue contributor
+  (asset-level revenue concentration High). Three High factors → bump to
+  **Critical** if E&O exclusion confirms the exposure is uninsurable.
+- `RR-02` — single zero-byte MLC monthly statement. Duration is one month,
+  dollars at risk are <1×, transferability impact is none. Final severity:
+  **Low**.
+
+When the factors disagree, the worst factor wins unless the finding is
+explicitly bounded (e.g., "limited to one already-excluded asset").
+
 ## Rights and ownership
 
 Critical or high red flags:

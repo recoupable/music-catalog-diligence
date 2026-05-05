@@ -63,6 +63,7 @@ music-catalog-diligence/
 ├── agents/
 ├── commands/
 ├── evals/
+├── hooks/
 ├── references/
 ├── scripts/
 ├── skills/
@@ -73,6 +74,29 @@ music-catalog-diligence/
 Claude Code and Cursor load the full plugin surface, including skills,
 commands, and agents. Codex loads the bundled skills through
 `.codex-plugin/plugin.json`.
+
+## Hooks
+
+Hooks run automatically at lifecycle events (such as before a file write or
+when the agent decides it is done) and turn workspace conventions into
+enforced invariants. They are configured in `hooks/hooks.json` and load when
+Claude Code starts a session, so restart the session to pick up changes.
+
+| Hook | Event | Type | Purpose |
+| ---- | ----- | ---- | ------- |
+| `protect-source-files.sh` | `PreToolUse` (`Write`/`Edit`/`MultiEdit`) | command | Deny any write into `deals/{deal-id}/source/`. Source files are immutable evidence per `references/deal-workspace.md`. |
+| package-readiness gate | `Stop` | prompt | Block the agent from finishing if it claims a deal package is ready without satisfying the completion gate from `references/deal-workspace.md` (e.g. `run-diligence-checks.py` ran cleanly, dashboard not blocked, `evidence-ledger.json` and `assumptions.yaml` exist, findings disclosed). Stays out of the way for ordinary chat or partial work. |
+
+Test the command-based hook script directly:
+
+```bash
+echo '{"tool_name":"Edit","tool_input":{"file_path":"deals/x/source/a.csv"}}' \
+  | bash hooks/protect-source-files.sh
+```
+
+The prompt-based `Stop` hook is evaluated by the LLM at runtime, so it cannot
+be unit-tested in isolation. Verify it loads with `/hooks` inside Claude Code,
+and watch it fire under `claude --debug`.
 
 ## Development
 

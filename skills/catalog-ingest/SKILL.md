@@ -54,6 +54,15 @@ columns. Never silently overwrite source data.
    transferable ownership.
 11. **Export the ingest package.** Include canonical tables, source lineage,
     data-quality notes, and missing-file tracker.
+12. **Build the manual-review queue and coverage summary.** Run
+    `scripts/build-manual-review-queue.py` and report the resulting
+    `summary_line` (e.g. "29 of 88 files contributed financial data;
+    50 require manual review").
+13. **Scan for hygiene leaks.** Run `scripts/dataroom-hygiene-scan.py` and
+    merge any high-strength matches into `findings/findings.json`.
+14. **Compute concentration.** Run `scripts/calculate-concentration.py`
+    with `--assumptions` to evaluate the configured threshold; merge any
+    auto-emitted finding into `findings.json`.
 
 ## Output contract
 
@@ -61,6 +70,13 @@ Use these artifacts unless the user asks for a different structure:
 
 | Artifact | Purpose |
 | --- | --- |
+| `workpapers/file-manifest.json` | Classified manifest (parse_status, likely_provider, period, currency, rights-type hint) per source file. |
+| `workpapers/ingest-coverage.json` | Coverage summary (`X of Y files contributed financial data; Z require manual review`). |
+| `workpapers/concentration-analysis.json` | Top-N concentration percentages per dimension; threshold-tripped flag. |
+| `workpapers/dataroom-hygiene.json` | Filenames and content patterns suggesting seller-side concealment leaks. |
+| `findings/manual-review-queue.md` | Per-file checklist of files that did not contribute financial data. |
+| `findings/dataroom-hygiene-findings.json` | Proposed `process_integrity` findings to merge into `findings.json`. |
+| `findings/concentration-finding.json` | Proposed `valuation` finding when concentration threshold is tripped. |
 | `ingest-manifest.md` | Explains source files, assumptions, and scope. |
 | `data-room-inventory.csv` | One row per source file. |
 | `canonical-catalog.csv` | One row per controlled work/recording candidate. |
@@ -69,6 +85,15 @@ Use these artifacts unless the user asks for a different structure:
 | `source-lineage.csv` | Field-level or row-level source traceability. |
 | `missing-files.md` | Required files, unresolved conflicts, and diligence asks. |
 | `data-quality-report.md` | Profiling results and cleanup decisions. |
+
+After producing the ledger, always run:
+
+- `scripts/build-manual-review-queue.py` — surfaces the X-of-Y coverage line and per-file actions.
+- `scripts/dataroom-hygiene-scan.py` — surfaces concealment-language matches like `DELETE_BEFORE_SHARING.txt`.
+- `scripts/calculate-concentration.py --assumptions` — auto-emits a finding when concentration trips the materiality threshold.
+
+Merge the proposed findings into `findings/findings.json` with real
+`evidence_ids` so they survive the `validate-findings-evidence.py` check.
 
 Detailed schemas are in
 **[references/canonical-schema.md](references/canonical-schema.md)**.
