@@ -92,6 +92,7 @@ When you're ready for your real catalog:
 | `/recoup-catalog-dashboard` | Power-user: refresh `DASHBOARD.html` after editing workpapers, findings, or recommendations. |
 | `/recoup-catalog-qc` | Power-user: re-run QC after editing findings or memos. |
 | `/recoup-catalog-package` | Power-user: refine the IC memo / financing pack / seller cleanup report. |
+| `/recoup-catalog-report` | Export the validated dashboard + memo as a single shareable PDF you can email (`deals/{deal-id}/REPORT.pdf`). |
 
 If you're new to the plugin, ignore the power-user commands. Use
 `/recoup-catalog-demo` once, then `/recoup-catalog-diligence` for real work.
@@ -107,6 +108,7 @@ the task:
 | `recoup-catalog-ingest` | Normalizes data rooms, royalty statements, metadata, and rights files into auditable hand-off artifacts. |
 | `recoup-catalog-analysis` | Analyzes normalized cash flows and projects value. |
 | `recoup-catalog-dashboard` | Authors the customer-facing HTML dashboard. The agent picks layout, charts, narrative, and depth — guided by a strong skill spec and a post-hoc validator. |
+| `recoup-catalog-report` | Packages the validated dashboard + memo + workpapers as a single shareable PDF (`deals/{deal-id}/REPORT.pdf`). Agent picks the conversion path (headless Chrome, Playwright, WeasyPrint, or ReportLab). |
 | `recoup-rights-diligence` | Reviews ownership support, chain of title, splits, restrictions, transferability. |
 | `recoup-royalty-audit` | Audits statements, normalized ledgers, PRO/MLC issues, gross-to-net support. |
 | `recoup-seller-prep` | Creates cleanup worklists that reduce avoidable valuation discounts before going to market. |
@@ -119,6 +121,7 @@ the task:
 ```text
 deals/{deal-id}/
 ├── DASHBOARD.html              ← open this first (agent-authored)
+├── REPORT.pdf                  ← optional shareable export (run /recoup-catalog-report)
 ├── source/                     ← raw seller files (immutable)
 ├── normalized/
 │   ├── royalty-ledger.csv
