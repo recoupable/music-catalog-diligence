@@ -1,13 +1,24 @@
 #!/usr/bin/env python3
-"""Build a markdown diligence dashboard for a catalog deal workspace.
+"""Build the internal readiness-check workpaper for a deal workspace.
 
-The dashboard reads ``findings/findings.json`` and reports an overall status:
+This is NOT the customer-facing dashboard — that's
+``deals/{deal-id}/DASHBOARD.html``, written by the agent via the
+recoup-catalog-dashboard skill and validated by ``validate-dashboard.py``.
+
+This script generates the analyst-facing readiness summary at
+``workpapers/readiness-check.md`` (default), reporting an overall
+status from open findings:
 
 - ``blocked``       -- one or more open *blocker* findings (severity ``critical``
                        or legacy ``P0``).
 - ``review_needed`` -- one or more open *high*-tier findings (severity ``high``
                        or legacy ``P1``).
 - ``ready``         -- no open blockers or high-severity findings.
+
+The Stop hook reads the resulting deal_status to decide whether the
+agent can claim a package is shareable. Customers don't open this
+file. The script is also referenced by ``/recoup-catalog-qc`` for the
+analyst readiness gate.
 
 Severity comparison is case-insensitive. Both the canonical lowercase taxonomy
 (``critical | high | medium | low``) and the legacy ``P0 | P1`` codes are
@@ -101,7 +112,7 @@ def render_dashboard(workspace: Path) -> str:
     findings, blockers, review_items = summarize_findings(workspace)
     status = determine_status(blockers, review_items)
     lines = [
-        "# Diligence Dashboard",
+        "# Readiness check (internal)",
         "",
         f"- Workspace: `{workspace}`",
         f"- Overall status: `{status}`",
@@ -148,7 +159,14 @@ def main() -> int:
     args = parser.parse_args()
 
     workspace = Path(args.deal_workspace)
-    output = Path(args.output) if args.output else workspace / "diligence-dashboard.md"
+    # Internal-only output. Lives under workpapers/ so the workspace
+    # root holds exactly one customer-facing artifact (DASHBOARD.html).
+    output = (
+        Path(args.output)
+        if args.output
+        else workspace / "workpapers" / "readiness-check.md"
+    )
+    output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(render_dashboard(workspace), encoding="utf-8")
 
     _, blockers, review_items = summarize_findings(workspace)

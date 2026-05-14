@@ -126,7 +126,7 @@ class BuildDashboardTest(unittest.TestCase):
     """
 
     def assert_dashboard_text(self, text: str, *, status: str, must_contain: list[str]) -> None:
-        self.assertIn("# Diligence Dashboard", text)
+        self.assertIn("# Readiness check (internal)", text)
         self.assertIn(f"Overall status: `{status}`", text)
         for fragment in must_contain:
             self.assertIn(fragment, text)

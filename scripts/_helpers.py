@@ -1,4 +1,4 @@
-"""Shared helpers for catalog-diligence scripts.
+"""Shared helpers for recoup-catalog-diligence scripts.
 
 Importable from any sibling script (Python adds the script's directory to
 `sys.path` automatically). Hyphenated script filenames cannot be imported,
