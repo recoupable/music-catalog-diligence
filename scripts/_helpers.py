@@ -1,4 +1,4 @@
-"""Shared helpers for recoup-catalog-deals scripts.
+"""Shared helpers for recoup-catalogs-plugin scripts.
 
 Importable from any sibling script (Python adds the script's directory to
 `sys.path` automatically). Hyphenated script filenames cannot be imported,

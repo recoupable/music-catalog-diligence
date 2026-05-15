@@ -1,5 +1,5 @@
 {
-  "name": "recoup-catalog-deals",
+  "name": "recoup-catalogs-plugin",
   "version": "0.2.0",
   "description": "Review royalties, rights, valuation, and deal materials for music catalog transactions.",
   "author": {
@@ -8,7 +8,7 @@
     "url": "https://recoupable.com"
   },
   "homepage": "https://recoupable.com",
-  "repository": "https://github.com/recoupable/recoup-catalog-deals",
+  "repository": "https://github.com/recoupable/recoup-catalogs-plugin",
   "license": "Apache-2.0",
   "keywords": [
     "music",
