@@ -12,6 +12,12 @@ memos. The whole thing is driven by a single command —
 
 ## Install
 
+### Claude Desktop (non-technical users)
+
+Not a developer? Step-by-step guide with screenshots:
+**[docs/install-claude-desktop.md](docs/install-claude-desktop.md)**.
+It takes about 5 minutes — no Terminal needed.
+
 ### Claude Code (CLI)
 
 ```bash
