@@ -1,13 +1,13 @@
 ---
 name: recoup-catalog-ingest
-description: Use when ingesting a music catalog data room, royalty statements, rights files, metadata exports, or messy catalog spreadsheets for diligence. Triggers include "catalog data room", "clean royalty statements", "normalize royalties", "music rights diligence", "catalog ingest", "merge catalog metadata", "prepare this catalog for valuation", or seller files containing ISRCs, ISWCs, splits, PRO statements, distributor reports, contracts, recoupment schedules, or YouTube Content ID reports.
+description: Use when ingesting a music catalog data room, royalty statements, rights files, metadata exports, or messy catalog spreadsheets for a deal review. Triggers include "catalog data room", "clean royalty statements", "normalize royalties", "music rights review", "catalog ingest", "merge catalog metadata", "prepare this catalog for valuation", or seller files containing ISRCs, ISWCs, splits, PRO statements, distributor reports, contracts, recoupment schedules, or YouTube Content ID reports.
 ---
 
 # Catalog Ingest
 
 Turn messy music catalog data rooms into auditable hand-off artifacts for
-diligence and valuation. The job is not to value the catalog. The job is to make
-the data trustworthy enough that valuation can happen.
+deal review and valuation. The job is not to value the catalog. The job is to
+make the data trustworthy enough that valuation can happen.
 
 ## Decision tree
 
@@ -83,7 +83,7 @@ Use these artifacts unless the user asks for a different structure:
 | `royalty-ledger.csv` | Normalized income lines across statements. |
 | `rights-map.csv` | Ownership, splits, contracts, restrictions, support level. |
 | `source-lineage.csv` | Field-level or row-level source traceability. |
-| `missing-files.md` | Required files, unresolved conflicts, and diligence asks. |
+| `missing-files.md` | Required files, unresolved conflicts, and open seller requests. |
 | `data-quality-report.md` | Profiling results and cleanup decisions. |
 
 After producing the ledger, always run:

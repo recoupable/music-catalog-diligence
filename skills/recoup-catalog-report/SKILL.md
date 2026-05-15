@@ -13,7 +13,7 @@ headline in 10 seconds and have the receipts on the next page.
 
 ## When this skill runs
 
-- After `/recoup-catalog-diligence` finishes, when the user wants to
+- After `/recoup-catalog-deal` finishes, when the user wants to
   share the deal externally.
 - When the user explicitly asks for a PDF version of the dashboard, IC
   memo, seller cleanup report, financing pack, or post-close plan.
@@ -73,7 +73,7 @@ in an appendix that gets dropped):
 - Provider mix — pie or bar, aggregated from `normalized/royalty-ledger.csv`.
 - Top-N concentration — usually top 10 assets by 12-month royalties.
 - Quarterly or monthly trend chart — print-friendly line or column.
-- Diligence asks — from `findings/missing-files.md`.
+- Open seller requests — from `findings/missing-files.md`.
 - Methodology section — assumptions used (discount rate, decay, etc.)
   from `assumptions.yaml`.
 
@@ -146,7 +146,7 @@ the dashboard reads:
 | `deals/{deal-id}/workpapers/concentration-analysis.json` | Top-N asset / provider / territory shares. |
 | `deals/{deal-id}/workpapers/recommendations.json` | "What you can do next." |
 | `deals/{deal-id}/findings/findings.json` | Every structured finding with severity and status. |
-| `deals/{deal-id}/findings/missing-files.md` | Diligence asks for the seller. |
+| `deals/{deal-id}/findings/missing-files.md` | Open requests for the seller. |
 | `deals/{deal-id}/evidence-ledger.json` | Evidence entries cited via `data-evidence`. |
 
 ## Quality bar — print-specific

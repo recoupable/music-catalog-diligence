@@ -1,9 +1,9 @@
 ---
-name: recoup-rights-diligence
-description: Use when reviewing music catalog ownership, chain of title, split sheets, publishing agreements, recording agreements, assignments, sample clearances, liens, reversions, territory restrictions, or transferability. Triggers include "chain of title", "rights diligence", "split sheet review", "does seller own this", "sample clearance", "reversion risk", or "catalog legal docs".
+name: recoup-rights-review
+description: Use when reviewing music catalog ownership, chain of title, split sheets, publishing agreements, recording agreements, assignments, sample clearances, liens, reversions, territory restrictions, or transferability. Triggers include "chain of title", "rights review", "split sheet review", "does seller own this", "sample clearance", "reversion risk", or "catalog legal docs".
 ---
 
-# Rights Diligence
+# Rights Review
 
 Review whether the seller can transfer the rights that the valuation assumes.
 Royalty income is evidence of reported payments; it is not proof of ownership.

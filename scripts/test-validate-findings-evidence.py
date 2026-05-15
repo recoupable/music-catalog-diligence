@@ -120,7 +120,7 @@ class ValidateFindingsEvidenceTest(unittest.TestCase):
                     {
                         "finding_id": "F-001",
                         "severity": "example",
-                        "issue": "Replace this example finding with a real diligence issue.",
+                        "issue": "Replace this example finding with a real deal-review issue.",
                         "evidence_ids": [],
                     }
                 ],

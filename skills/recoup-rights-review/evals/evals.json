@@ -1,5 +1,5 @@
 {
-  "skill_name": "recoup-rights-diligence",
+  "skill_name": "recoup-rights-review",
   "evals": [
     {
       "id": "missing-chain-of-title",
@@ -9,7 +9,7 @@
     },
     {
       "id": "sample-and-territory-restrictions",
-      "prompt": "Several top tracks include samples and one assignment excludes non-US territories. Review transferability risks before we share the diligence memo.",
+      "prompt": "Several top tracks include samples and one assignment excludes non-US territories. Review transferability risks before we share the deal memo.",
       "expected_output": "The agent identifies sample clearance and territory-limit risks, ties each issue to affected assets and income streams, and recommends disclosure, counsel review, or purchase price protection.",
       "files": []
     }

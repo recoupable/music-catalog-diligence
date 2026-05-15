@@ -1,13 +1,13 @@
 ---
 name: recoup-catalog-kickoff
-description: Set up a music catalog deal workspace and first diligence request list. For full end-to-end runs prefer /recoup-catalog-diligence.
+description: Set up a music catalog deal workspace and first deal-review request list. For full end-to-end runs prefer /recoup-catalog-deal.
 ---
 
 # Catalog Kickoff
 
-Use the `recoup-diligence-kickoff` skill.
+Use the `recoup-deal-kickoff` skill.
 
-> **Most users should run `/recoup-catalog-diligence` instead** — that command
+> **Most users should run `/recoup-catalog-deal` instead** — that command
 > chains kickoff → ingest → analysis → dashboard → memo without
 > stopping. This command is kickoff only, for analysts who want to
 > scaffold a workspace and stop before ingest.
@@ -24,7 +24,7 @@ Use the `recoup-diligence-kickoff` skill.
    until normalized artifacts are created — use the missing requirements
    as the initial worklist.
 6. Recommend the next command. The default recommendation is
-   `/recoup-catalog-diligence` (it picks up where kickoff stopped). Only
+   `/recoup-catalog-deal` (it picks up where kickoff stopped). Only
    recommend a single phase command if the user explicitly asked for
    one.
 
@@ -39,11 +39,11 @@ Do not value the catalog during kickoff.
   Workflow:    <buy-side | recoup-seller-prep | financing>
   Files in:    <count> seller-supplied files staged in source/
 
-  Initial worklist (from references/diligence-workflow.md):
+  Initial worklist (from references/deal-workflow.md):
     - <missing item 1>
     - <missing item 2>
 
 Next:
-  /recoup-catalog-diligence    — drive end-to-end (recommended)
+  /recoup-catalog-deal         — drive end-to-end (recommended)
   /recoup-catalog-ingest       — ingest only
 ```

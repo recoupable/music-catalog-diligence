@@ -1,6 +1,6 @@
 ---
 name: recoup-catalog-analysis
-description: Use when analyzing or valuing a music catalog for acquisition, financing, sale, or investment diligence. Triggers include "catalog valuation", "music catalog analysis", "project catalog value", "what is this catalog worth", "NPS multiple", "NLS multiple", "quality of earnings", "royalty cash flows", "catalog acquisition", "recoupment cliff", "PRO bonus", "normalize royalties", or "build an investment memo" for publishing or master rights.
+description: Use when analyzing or valuing a music catalog for acquisition, financing, sale, or investment deal review. Triggers include "catalog valuation", "music catalog analysis", "project catalog value", "what is this catalog worth", "NPS multiple", "NLS multiple", "quality of earnings", "royalty cash flows", "catalog acquisition", "recoupment cliff", "PRO bonus", "normalize royalties", or "build an investment memo" for publishing or master rights.
 ---
 
 # Catalog Analysis
@@ -23,7 +23,7 @@ Start here based on the user request:
 - **Mixed rights catalog** -> segment publishing and master income separately,
   then reconcile to a blended view.
 - **Quick value estimate requested** -> give a clearly labeled diagnostic range
-  and list missing diligence. Do not present it as a full valuation.
+  and list open deal-review items. Do not present it as a full valuation.
 
 If inputs are too incomplete, say what cannot be valued yet and list the minimum
 files needed.
@@ -50,7 +50,7 @@ files needed.
 9. **Value the catalog.** Use market multiples and/or DCF, then reconcile to a
    supportable range.
 10. **Write the memo.** Lead with value range, normalized cash flow, key risks,
-    missing diligence, and recommended holdbacks or haircuts.
+    open deal-review items, and recommended holdbacks or haircuts.
 
 Run deterministic scripts from `scripts/` when the required files exist:
 
@@ -98,7 +98,7 @@ as illustrative and do not mix it into the final valuation.
 - **Unsupported income is risky.** If the rights map cannot support meaningful
   income, separate financial performance from transferable value.
 - **Do not fabricate assumptions.** Unknown decay, split, recoupment, reserve,
-  or reversion data must stay visible as missing diligence.
+  or reversion data must stay visible as open deal-review items.
 
 ## Outputs
 
@@ -107,14 +107,14 @@ Use these outputs for a full analysis:
 - Executive valuation summary.
 - Quality-of-earnings bridge.
 - Revenue mix and concentration analysis.
-- Rights-support and diligence exceptions.
+- Rights-support and deal-review exceptions.
 - Normalized NPS/NLS calculation.
 - Downside/base/upside cash-flow scenarios.
 - Market-multiple valuation.
 - DCF valuation, when enough data exists.
 - Sensitivity table.
 - Risk register.
-- Recommended holdback, escrow, haircut, or follow-up diligence.
+- Recommended holdback, escrow, haircut, or follow-up deal-review items.
 
 Templates and memo structure are in
 **[references/output-templates.md](references/output-templates.md)**.

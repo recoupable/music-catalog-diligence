@@ -5,7 +5,7 @@ description: Use after a music catalog acquisition closes, when transferring roy
 
 # Post-Close Admin
 
-Turn diligence data into an administration transition plan after close. The goal
+Turn deal-review data into an administration transition plan after close. The goal
 is to prevent income leakage while ownership records, registrations, and
 royalty systems move to the buyer.
 
@@ -33,7 +33,7 @@ Return:
 
 ## Guardrails
 
-- Do not assume closing schedules match diligence tables; compare them.
+- Do not assume closing schedules match deal-review tables; compare them.
 - Do not overwrite historical evidence.
 - Do not mark transition complete until first statement checks are done or
   explicitly deferred.

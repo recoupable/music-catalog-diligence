@@ -25,7 +25,7 @@ Show the bridge from reported LTM NPS/NLS to normalized run-rate.
 
 Summarize market multiple and DCF outputs, including downside/base/upside cases.
 
-## Key diligence findings
+## Key deal-review findings
 
 List material red flags, evidence, and valuation treatment.
 

@@ -1,21 +1,21 @@
 ---
 name: recoup-catalog-analyze
-description: Run normalized-catalog analysis (royalties, risk, concentration, valuation scenarios). For full end-to-end runs prefer /recoup-catalog-diligence.
+description: Run normalized-catalog analysis (royalties, risk, concentration, valuation scenarios). For full end-to-end runs prefer /recoup-catalog-deal.
 ---
 
 # Catalog Analyze
 
-Use the `recoup-catalog-analysis`, `recoup-royalty-audit`, and `recoup-rights-diligence` skills as
+Use the `recoup-catalog-analysis`, `recoup-royalty-audit`, and `recoup-rights-review` skills as
 needed.
 
-> **Most users should run `/recoup-catalog-diligence` instead** — that command
+> **Most users should run `/recoup-catalog-deal` instead** — that command
 > chains kickoff → ingest → analysis → dashboard → memo without
 > stopping. This command is the analysis phase only, for analysts who
 > already have normalized data and want to refresh workpapers.
 
 ## Steps
 
-1. Run `python3 scripts/run-diligence-checks.py deals/{deal-id}`.
+1. Run `python3 scripts/run-deal-checks.py deals/{deal-id}`.
    Validator failures must be cured before analysis.
 2. Confirm whether analysis is for buy-side acquisition, seller prep, or
    financing.
@@ -24,7 +24,7 @@ needed.
    - `workpapers/nps-bridge.json`
    - `workpapers/nls-bridge.json`
    - `workpapers/valuation-summary.json` (with `normalized` and
-     `scenarios` keys — see `/recoup-catalog-diligence` Phase 4 for the schema).
+     `scenarios` keys — see `/recoup-catalog-deal` Phase 4 for the schema).
 4. Run `python3 scripts/calculate-concentration.py` and
    `python3 scripts/calculate-nps-nls-bridge.py` when normalized inputs
    are available.

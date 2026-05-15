@@ -1,6 +1,6 @@
 ---
 name: recoup-financing-underwrite
-description: Use when underwriting a music catalog for an advance, loan, credit facility, securitization, collateral package, or royalty-backed financing. Triggers include "catalog financing", "underwrite this catalog", "advance rate", "collateral package", "royalty loan", "financing pack", "debt capacity", or "lender diligence".
+description: Use when underwriting a music catalog for an advance, loan, credit facility, securitization, collateral package, or royalty-backed financing. Triggers include "catalog financing", "underwrite this catalog", "advance rate", "collateral package", "royalty loan", "financing pack", "debt capacity", or "lender deal review".
 ---
 
 # Financing Underwrite

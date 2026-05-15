@@ -1,6 +1,6 @@
 ---
 name: recoup-catalog-demo
-description: Run /recoup-catalog-diligence end-to-end on the bundled synthetic catalog so a first-time user can see an executive dashboard within ~60 seconds.
+description: Run /recoup-catalog-deal end-to-end on the bundled synthetic catalog so a first-time user can see an executive dashboard within ~60 seconds.
 ---
 
 # Catalog Demo
@@ -22,10 +22,10 @@ files.
    - `materiality.concentration_threshold_percent: 25` (lower than the
      default 40 so the demo's ~35% top-1 concentration trips the
      threshold and the auto-emitted finding shows up).
-3. Runs the full `/recoup-catalog-diligence` flow against the demo workspace:
+3. Runs the full `/recoup-catalog-deal` flow against the demo workspace:
    kickoff → ingest → analysis → modeling → agent-authored dashboard →
    IC memo.
-4. Ends with the same landing card as `/recoup-catalog-diligence`, pointed at
+4. Ends with the same landing card as `/recoup-catalog-deal`, pointed at
    `deals/demo-catalog/DASHBOARD.html`.
 
 ## Steps the agent must execute
@@ -87,8 +87,8 @@ notes:
 YAML
 ```
 
-After scaffolding, run `/recoup-catalog-diligence` end-to-end exactly as
-specified in `commands/recoup-catalog-diligence.md`. The demo data is
+After scaffolding, run `/recoup-catalog-deal` end-to-end exactly as
+specified in `commands/recoup-catalog-deal.md`. The demo data is
 deliberately shaped to produce these AHA moments without intervention:
 
 - **Ingest coverage line**: roughly "5 of 8 statement files contributed
@@ -109,7 +109,7 @@ deliberately shaped to produce these AHA moments without intervention:
 
 ## Final landing card
 
-End with `/recoup-catalog-diligence`'s landing card, pointed at the demo
+End with `/recoup-catalog-deal`'s landing card, pointed at the demo
 workspace:
 
 ```text
@@ -127,5 +127,5 @@ Open this first:
   deals/demo-catalog/DASHBOARD.html
 
 When you're ready for your real catalog:
-  /recoup-catalog-diligence
+  /recoup-catalog-deal
 ```

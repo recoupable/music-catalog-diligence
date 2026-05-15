@@ -1,6 +1,6 @@
 ---
 name: rights-chain-reviewer
-description: Reviews music catalog chain of title, ownership support, split sheets, assignments, samples, reversions, territory limits, and transferability. Use for isolated legal/rights diligence review on a deal workspace.
+description: Reviews music catalog chain of title, ownership support, split sheets, assignments, samples, reversions, territory limits, and transferability. Use for isolated legal/rights review on a deal workspace.
 tools:
   - Read
   - Glob

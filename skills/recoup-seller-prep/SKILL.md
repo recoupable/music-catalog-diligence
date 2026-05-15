@@ -1,6 +1,6 @@
 ---
 name: recoup-seller-prep
-description: Use when preparing a music catalog for sale, improving catalog readiness, cleaning metadata before going to market, creating a seller cleanup report, finding missing documentation, or maximizing catalog value before buyer diligence. Triggers include "prepare catalog for sale", "seller prep", "maximize catalog value", "catalog audit checklist", "clean up before sale", or "what should we fix before going to market".
+description: Use when preparing a music catalog for sale, improving catalog readiness, cleaning metadata before going to market, creating a seller cleanup report, finding missing documentation, or maximizing catalog value before a buyer's deal review. Triggers include "prepare catalog for sale", "seller prep", "maximize catalog value", "catalog audit checklist", "clean up before sale", or "what should we fix before going to market".
 ---
 
 # Seller Prep
@@ -10,10 +10,10 @@ prep is not about inflating value. It is about reducing avoidable discounts.
 
 ## Workflow
 
-1. Run `recoup-diligence-kickoff` with workflow type `recoup-seller-prep`.
+1. Run `recoup-deal-kickoff` with workflow type `recoup-seller-prep`.
 2. Inventory files and build missing-document tracker.
 3. Use `recoup-catalog-ingest` to normalize metadata and royalty statements.
-4. Use `recoup-rights-diligence` to find unsupported assets.
+4. Use `recoup-rights-review` to find unsupported assets.
 5. Use `recoup-royalty-audit` to find income leakage and statement gaps.
 6. Rank fixes by likely value impact and time to cure.
 7. Draft `memos/seller-cleanup-report.md`.

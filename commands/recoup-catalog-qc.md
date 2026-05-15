@@ -1,33 +1,33 @@
 ---
 name: recoup-catalog-qc
-description: Run diligence quality control before a catalog package is shared. Refreshes the executive dashboard with the latest findings.
+description: Run deal-review quality control before a catalog package is shared. Refreshes the executive dashboard with the latest findings.
 ---
 
 # Catalog QC
 
-Use the `diligence-qc-reviewer` agent when available.
+Use the `deal-qc-reviewer` agent when available.
 
-> **Most users should run `/recoup-catalog-diligence` instead** — that command
+> **Most users should run `/recoup-catalog-deal` instead** — that command
 > includes QC as Phase 6. This command is the QC phase only, for
 > analysts who edited findings or memos and want to re-check before
 > sharing.
 
 ## Steps
 
-1. Run `python3 scripts/run-diligence-checks.py deals/{deal-id}`.
+1. Run `python3 scripts/run-deal-checks.py deals/{deal-id}`.
 2. Check that material memo claims cite evidence or are labeled
    assumptions.
 3. Check that open findings are not hidden.
 4. Check that source files were not modified (the PreToolUse hook
    prevents this, but verify the hook actually loaded).
-5. Run `python3 scripts/build-diligence-dashboard.py deals/{deal-id}`
+5. Run `python3 scripts/build-deal-readiness.py deals/{deal-id}`
    for the internal readiness check
    (`workpapers/readiness-check.md`).
 6. **Refresh the customer dashboard** so what the user sees matches the
    QC verdict. Use the `recoup-catalog-dashboard` skill to update
    `deals/{deal-id}/DASHBOARD.html`, then validate:
    `python3 scripts/validate-dashboard.py deals/{deal-id}`.
-7. Dispatch the `diligence-qc-reviewer` agent with the IC memo and the
+7. Dispatch the `deal-qc-reviewer` agent with the IC memo and the
    findings as input. Surface its `overall_status`, `blockers`, and
    `unsupported_claims` verbatim.
 

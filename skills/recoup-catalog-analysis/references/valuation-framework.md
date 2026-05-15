@@ -11,7 +11,7 @@ Before calculating value, state:
 - Share being acquired: controlled share, income share, territory, and term.
 - Income metric: `NPS` for publishing, `NLS` for masters.
 - Currency and reporting period.
-- Whether the analysis is preliminary or full diligence.
+- Whether the analysis is preliminary or a full deal review.
 
 ## Earnings metrics
 
@@ -107,4 +107,4 @@ Apply or recommend haircuts for:
 - Re-recording/version risk for masters.
 
 Explain whether a haircut reduces value, requires escrow/holdback, or blocks the
-deal until diligence is cured.
+deal until open items are cured.

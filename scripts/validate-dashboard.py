@@ -70,7 +70,7 @@ MAX_BYTES = 5 * 1024 * 1024
 REQUIRED_MARKERS: list[tuple[str, tuple[str, ...]]] = [
     ("status indicator", ("ready", "review", "blocked", "review_needed", "review needed")),
     ("KPI section", ("normalized nps", "normalized nls", "net publisher share", "net label share", "ltm")),
-    ("findings section", ("finding", "blocker", "open issue", "diligence issue")),
+    ("findings section", ("finding", "blocker", "open issue", "deal issue")),
     ("evidence trail", ("evidence", "source", "data-evidence", "data-source", "data-derived")),
     (
         "recommendations section",

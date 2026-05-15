@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for diligence readiness helpers."""
+"""Tests for deal readiness helpers."""
 
 from __future__ import annotations
 
@@ -13,8 +13,8 @@ from typing import Any
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-RUN_CHECKS = SCRIPT_DIR / "run-diligence-checks.py"
-BUILD_DASHBOARD = SCRIPT_DIR / "build-diligence-dashboard.py"
+RUN_CHECKS = SCRIPT_DIR / "run-deal-checks.py"
+BUILD_READINESS = SCRIPT_DIR / "build-deal-readiness.py"
 
 
 def create_workspace(root: Path, findings: list[dict[str, Any]] | None = None) -> Path:
@@ -71,13 +71,13 @@ def create_workspace(root: Path, findings: list[dict[str, Any]] | None = None) -
     return workspace
 
 
-def run_dashboard(workspace: Path, *extra_args: str) -> subprocess.CompletedProcess[str]:
-    """Run build-diligence-dashboard.py against a workspace and capture output."""
-    output = workspace / "diligence-dashboard.md"
+def run_readiness(workspace: Path, *extra_args: str) -> subprocess.CompletedProcess[str]:
+    """Run build-deal-readiness.py against a workspace and capture output."""
+    output = workspace / "deal-readiness.md"
     return subprocess.run(
         [
             sys.executable,
-            str(BUILD_DASHBOARD),
+            str(BUILD_READINESS),
             str(workspace),
             "--output",
             str(output),
@@ -89,7 +89,7 @@ def run_dashboard(workspace: Path, *extra_args: str) -> subprocess.CompletedProc
     )
 
 
-class DiligenceReadinessTest(unittest.TestCase):
+class DealReadinessTest(unittest.TestCase):
     def test_run_checks_reports_all_validator_results(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             workspace = create_workspace(Path(directory))
@@ -116,16 +116,16 @@ class DiligenceReadinessTest(unittest.TestCase):
         )
 
 
-class BuildDashboardTest(unittest.TestCase):
+class BuildReadinessTest(unittest.TestCase):
     """Locks in the fix for the severity-taxonomy / title-field bug.
 
-    Before the fix, the dashboard only treated ``P0``/``P1`` as severe and
+    Before the fix, the readiness check only treated ``P0``/``P1`` as severe and
     looked up ``title``. The rest of the plugin emits findings using the
     canonical ``critical|high|medium|low`` taxonomy with an ``issue`` field,
     which silently produced ``ready`` even when blockers existed.
     """
 
-    def assert_dashboard_text(self, text: str, *, status: str, must_contain: list[str]) -> None:
+    def assert_readiness_text(self, text: str, *, status: str, must_contain: list[str]) -> None:
         self.assertIn("# Readiness check (internal)", text)
         self.assertIn(f"Overall status: `{status}`", text)
         for fragment in must_contain:
@@ -135,11 +135,11 @@ class BuildDashboardTest(unittest.TestCase):
         """Backwards compatibility: the original P1+title fixture still works."""
         with tempfile.TemporaryDirectory() as directory:
             workspace = create_workspace(Path(directory))
-            result = run_dashboard(workspace)
+            result = run_readiness(workspace)
             self.assertEqual(result.returncode, 0, msg=result.stderr)
-            text = (workspace / "diligence-dashboard.md").read_text(encoding="utf-8")
+            text = (workspace / "deal-readiness.md").read_text(encoding="utf-8")
 
-        self.assert_dashboard_text(
+        self.assert_readiness_text(
             text,
             status="review_needed",
             must_contain=["Missing split sheet for top composition"],
@@ -162,18 +162,18 @@ class BuildDashboardTest(unittest.TestCase):
                     }
                 ],
             )
-            result = run_dashboard(workspace)
+            result = run_readiness(workspace)
             self.assertEqual(result.returncode, 0, msg=result.stderr)
-            text = (workspace / "diligence-dashboard.md").read_text(encoding="utf-8")
+            text = (workspace / "deal-readiness.md").read_text(encoding="utf-8")
 
-        self.assert_dashboard_text(
+        self.assert_readiness_text(
             text,
             status="review_needed",
             must_contain=["Income-generating work has no split sheet."],
         )
 
     def test_canonical_critical_severity_renders_blocked(self) -> None:
-        """A critical finding must drive the dashboard into ``blocked``."""
+        """A critical finding must drive the readiness into ``blocked``."""
         with tempfile.TemporaryDirectory() as directory:
             workspace = create_workspace(
                 Path(directory),
@@ -188,11 +188,11 @@ class BuildDashboardTest(unittest.TestCase):
                     }
                 ],
             )
-            result = run_dashboard(workspace)
+            result = run_readiness(workspace)
             self.assertEqual(result.returncode, 0, msg=result.stderr)
-            text = (workspace / "diligence-dashboard.md").read_text(encoding="utf-8")
+            text = (workspace / "deal-readiness.md").read_text(encoding="utf-8")
 
-        self.assert_dashboard_text(
+        self.assert_readiness_text(
             text,
             status="blocked",
             must_contain=["Catalog-wide assignment is missing."],
@@ -213,9 +213,9 @@ class BuildDashboardTest(unittest.TestCase):
                     }
                 ],
             )
-            result = run_dashboard(workspace)
+            result = run_readiness(workspace)
             self.assertEqual(result.returncode, 0, msg=result.stderr)
-            text = (workspace / "diligence-dashboard.md").read_text(encoding="utf-8")
+            text = (workspace / "deal-readiness.md").read_text(encoding="utf-8")
 
         self.assertIn("Overall status: `review_needed`", text)
 
@@ -234,9 +234,9 @@ class BuildDashboardTest(unittest.TestCase):
                     }
                 ],
             )
-            result = run_dashboard(workspace)
+            result = run_readiness(workspace)
             self.assertEqual(result.returncode, 0, msg=result.stderr)
-            text = (workspace / "diligence-dashboard.md").read_text(encoding="utf-8")
+            text = (workspace / "deal-readiness.md").read_text(encoding="utf-8")
 
         self.assertIn("Overall status: `ready`", text)
 
@@ -255,7 +255,7 @@ class BuildDashboardTest(unittest.TestCase):
                     }
                 ],
             )
-            result = run_dashboard(workspace)
+            result = run_readiness(workspace)
 
         self.assertEqual(result.returncode, 0, msg=result.stderr)
         payload = json.loads(result.stdout)
@@ -278,7 +278,7 @@ class BuildDashboardTest(unittest.TestCase):
                     }
                 ],
             )
-            result = run_dashboard(workspace, "--fail-on-blocked")
+            result = run_readiness(workspace, "--fail-on-blocked")
 
         self.assertEqual(result.returncode, 1, msg=result.stdout + result.stderr)
 
@@ -297,7 +297,7 @@ class BuildDashboardTest(unittest.TestCase):
                     }
                 ],
             )
-            result = run_dashboard(workspace, "--fail-on-blocked")
+            result = run_readiness(workspace, "--fail-on-blocked")
 
         self.assertEqual(result.returncode, 0, msg=result.stderr)
 

@@ -1,13 +1,13 @@
 ---
 name: recoup-catalog-report
-description: Export the deal as a single shareable, emailable PDF. Converts the validated DASHBOARD.html (and supporting memos / workpapers) into deals/{deal-id}/REPORT.pdf. Use after diligence finishes when you want to forward the deal to an IC, lender, buyer, seller, or counsel.
+description: Export the deal as a single shareable, emailable PDF. Converts the validated DASHBOARD.html (and supporting memos / workpapers) into deals/{deal-id}/REPORT.pdf. Use after the deal review finishes when you want to forward it to an IC, lender, buyer, seller, or counsel.
 ---
 
 # Catalog Report (PDF)
 
 Use the `recoup-catalog-report` skill.
 
-> **Run `/recoup-catalog-diligence` first.** That command produces the
+> **Run `/recoup-catalog-deal` first.** That command produces the
 > validated dashboard, memo, and workpapers this report packages. This
 > command is the export step — it turns those artifacts into a single
 > PDF you can attach to an email.

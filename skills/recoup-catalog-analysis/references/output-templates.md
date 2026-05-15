@@ -26,7 +26,7 @@ Key risks:
 - [Risk 2]
 - [Risk 3]
 
-Required diligence before final valuation:
+Required items before final valuation:
 - [Missing item 1]
 - [Missing item 2]
 ```

@@ -1,6 +1,6 @@
 # Red flags
 
-Use this reference to classify diligence issues by severity and valuation
+Use this reference to classify deal-review issues by severity and valuation
 impact. Red flags do not always kill a deal. They force a decision: cure,
 haircut, escrow, holdback, or walk away.
 

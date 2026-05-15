@@ -12,7 +12,7 @@ Writes:
   into findings/findings.json (one per matched file).
 
 Catching this pattern (e.g. DELETE_BEFORE_SHARING.txt) reframes how to read
-the rest of the data room and is materially load-bearing for diligence trust
+the rest of the data room and is materially load-bearing for deal-review trust
 posture.
 """
 

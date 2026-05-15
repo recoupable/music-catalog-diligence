@@ -1,9 +1,9 @@
 ---
-name: recoup-catalog-diligence
-description: One-command end-to-end catalog diligence. Scaffolds the workspace, normalizes the data room, runs analysis, builds an agent-authored DASHBOARD.html, validates it, and drafts the IC memo without stopping for permission between phases.
+name: recoup-catalog-deal
+description: One-command end-to-end catalog deal review. Scaffolds the workspace, normalizes the data room, runs analysis, builds an agent-authored DASHBOARD.html, validates it, and drafts the IC memo without stopping for permission between phases.
 ---
 
-# Catalog Diligence
+# Catalog Deal
 
 This is the **default starting point** for any music catalog deal. It runs
 the full workflow end-to-end and ends with a single executive HTML
@@ -21,7 +21,7 @@ and **keep going** with the rest of the catalog.
 
 ### Phase 1 — Kickoff (≤30 seconds)
 
-Use the `recoup-diligence-kickoff` skill.
+Use the `recoup-deal-kickoff` skill.
 
 1. Confirm `workflow_type` (`buy-side` / `recoup-seller-prep` / `financing`)
    and `deal_id`. If not provided, ask once with a structured form;
@@ -70,7 +70,7 @@ Use the `recoup-catalog-ingest` skill.
 4. `python3 scripts/dataroom-hygiene-scan.py deals/{deal-id}` — merge any
    high-strength matches into `findings/findings.json`.
 5. `python3 scripts/calculate-concentration.py deals/{deal-id}/normalized/royalty-ledger.csv --assumptions deals/{deal-id}/assumptions.yaml --output deals/{deal-id}/workpapers/concentration-analysis.json --emit-finding-output deals/{deal-id}/findings/concentration-finding.json` — auto-emits a `valuation` finding when the threshold trips. Merge into `findings/findings.json` with a real `evidence_ids` reference to the concentration workpaper.
-6. `python3 scripts/run-diligence-checks.py deals/{deal-id}` — every
+6. `python3 scripts/run-deal-checks.py deals/{deal-id}` — every
    validator must pass before moving on. If it fails, fix the specific
    error (usually missing evidence IDs on auto-emitted findings) and
    re-run; do not skip.
@@ -91,7 +91,7 @@ with three Task calls):
    bridge support, concentration impact, decay.
 
 Merge each agent's findings into `findings/findings.json` with proper
-`evidence_ids`. After merge, re-run `run-diligence-checks.py` to confirm
+`evidence_ids`. After merge, re-run `run-deal-checks.py` to confirm
 nothing broke.
 
 ### Phase 4 — Modeling — write the workpapers
@@ -169,10 +169,10 @@ Use the `recoup-ic-memo-package` skill.
 1. Draft `deals/{deal-id}/memos/ic-memo.md` from
    `templates/deal-workspace/memos/ic-memo.md`. Pull every material
    number from the workpapers, not from prose memory.
-2. Run the `diligence-qc-reviewer` agent against the memo. If it returns
+2. Run the `deal-qc-reviewer` agent against the memo. If it returns
    `overall_status: "blocked"`, surface the blockers in the final recap
    but **do not silently rewrite the memo**.
-3. `python3 scripts/build-diligence-dashboard.py deals/{deal-id}` for
+3. `python3 scripts/build-deal-readiness.py deals/{deal-id}` for
    the internal readiness check (writes
    `workpapers/readiness-check.md` — analyst-facing only, not for the
    customer).
@@ -182,7 +182,7 @@ Use the `recoup-ic-memo-package` skill.
 End with **exactly** this shape, populated from the actual run:
 
 ```text
-✅ Diligence ready for review.
+✅ Deal review ready.
 
 Headline:
   Normalized NPS run-rate $X.
@@ -205,13 +205,14 @@ What I did NOT do (and why):
 Next options:
   /recoup-catalog-package — refine the IC memo
   /recoup-catalog-qc      — re-run QC after edits
+  /recoup-catalog-report  — export the deal as a shareable PDF
 ```
 
 ## Rules the agent must follow
 
 - **Truthfulness over polish.** If a phase failed or skipped a file,
   say so in the recap. Never claim ingest is "complete" while
-  `run-diligence-checks.py` reports failures.
+  `run-deal-checks.py` reports failures.
 - **No mid-workflow stops.** If you finish Phase 2 and feel uncertain
   about Phase 3, run Phase 3 anyway. The user can stop you with a
   follow-up message.
@@ -236,6 +237,7 @@ These commands exist for analysts who want to run a single phase only:
 - `/recoup-catalog-qc` — Phase 6 QC only.
 - `/recoup-catalog-dashboard` — Phase 5 only (refresh `DASHBOARD.html` after editing workpapers).
 - `/recoup-catalog-package` — Phase 5–6 only (dashboard + memo).
-- `/recoup-catalog-demo` — `/recoup-catalog-diligence` against bundled synthetic data.
+- `/recoup-catalog-report` — Export the validated deal as a shareable PDF.
+- `/recoup-catalog-demo` — `/recoup-catalog-deal` against bundled synthetic data.
 
-Most users should run `/recoup-catalog-diligence` and let it drive.
+Most users should run `/recoup-catalog-deal` and let it drive.

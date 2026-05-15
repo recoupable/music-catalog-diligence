@@ -59,7 +59,7 @@ Common files:
 
 ### `findings/`
 
-Store structured diligence exceptions and red flags.
+Store structured deal-review exceptions and red flags.
 
 Common files:
 

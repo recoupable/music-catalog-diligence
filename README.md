@@ -1,4 +1,4 @@
-# Recoup Catalog Diligence
+# Recoup Catalog Deals
 
 Agent plugin for music catalog acquisition, seller preparation, financing
 underwriting, royalty normalization, rights checks, and valuation
@@ -8,14 +8,14 @@ The plugin turns a messy seller data room into a source-cited deal
 package: normalized royalty data, rights exceptions, valuation
 workpapers, an **agent-authored HTML dashboard**, and buyer/seller/lender
 memos. The whole thing is driven by a single command —
-`/recoup-catalog-diligence`.
+`/recoup-catalog-deal`.
 
 ## Install
 
 ### Claude Code (CLI)
 
 ```bash
-claude plugin install https://github.com/recoupable/recoup-catalog-diligence
+claude plugin install https://github.com/recoupable/recoup-catalog-deals
 ```
 
 Then **restart your Claude Code session** so `hooks/hooks.json` loads.
@@ -24,13 +24,13 @@ Then **restart your Claude Code session** so `hooks/hooks.json` loads.
 
 1. Open the plugin marketplace (puzzle-piece icon in the sidebar).
 2. Click **Add custom plugin** and paste:
-   `https://github.com/recoupable/recoup-catalog-diligence`
+   `https://github.com/recoupable/recoup-catalog-deals`
 3. Approve the requested tool permissions (`Read`, `Write`, `Bash` —
    needed to run the validator scripts).
 4. **Restart the Cowork session** so the PreToolUse and Stop hooks
    load.
 5. Confirm install: type `/plugin` and check that
-   `recoup-catalog-diligence` is listed.
+   `recoup-catalog-deals` is listed.
 
 ### Cursor
 
@@ -54,7 +54,7 @@ You can skip this if your data room is CSV/TSV only.
 
 After installing, open a new chat in Claude and try:
 
-> **Let's analyze a catalog with /recoup-catalog-diligence**
+> **Let's analyze a catalog with /recoup-catalog-deal**
 
 Claude will ask what kind of deal this is (buy-side, seller-prep, or
 financing) and what to call it. Drag your seller's files into the
@@ -94,7 +94,7 @@ workflow against a bundled synthetic catalog.
 
 | Command | When to use it |
 | ------- | -------------- |
-| `/recoup-catalog-diligence` | **Default.** End-to-end run from kickoff to dashboard and IC memo, no stops between phases. |
+| `/recoup-catalog-deal` | **Default.** End-to-end run from kickoff to dashboard and IC memo, no stops between phases. |
 | `/recoup-catalog-demo` | Optional: runs the full workflow on a bundled synthetic catalog. Useful for showing a teammate what the plugin produces. |
 | `/recoup-catalog-kickoff` | Power-user: scaffold the workspace and stop. |
 | `/recoup-catalog-ingest` | Power-user: re-normalize after dropping new files into `source/`. Auto-recovers when seller headers don't match a provider profile. |
@@ -105,7 +105,7 @@ workflow against a bundled synthetic catalog.
 | `/recoup-catalog-report` | Export the validated dashboard + memo as a single shareable PDF you can email (`deals/{deal-id}/REPORT.pdf`). |
 
 If you're new to the plugin, ignore the power-user commands and start
-with `/recoup-catalog-diligence`. Try `/recoup-catalog-demo` only if
+with `/recoup-catalog-deal`. Try `/recoup-catalog-demo` only if
 you want to see the output before pointing it at a real deal.
 
 ## Skills
@@ -115,19 +115,19 @@ the task:
 
 | Skill | What it does |
 | ----- | ------------ |
-| `recoup-diligence-kickoff` | Scaffolds a deal workspace and produces the first missing-file list. |
+| `recoup-deal-kickoff` | Scaffolds a deal workspace and produces the first missing-file list. |
 | `recoup-catalog-ingest` | Normalizes data rooms, royalty statements, metadata, and rights files into auditable hand-off artifacts. |
 | `recoup-catalog-analysis` | Analyzes normalized cash flows and projects value. |
 | `recoup-catalog-dashboard` | Authors the customer-facing HTML dashboard. The agent picks layout, charts, narrative, and depth — guided by a strong skill spec and a post-hoc validator. |
 | `recoup-catalog-report` | Packages the validated dashboard + memo + workpapers as a single shareable PDF (`deals/{deal-id}/REPORT.pdf`). Agent picks the conversion path (headless Chrome, Playwright, WeasyPrint, or ReportLab). |
-| `recoup-rights-diligence` | Reviews ownership support, chain of title, splits, restrictions, transferability. |
+| `recoup-rights-review` | Reviews ownership support, chain of title, splits, restrictions, transferability. |
 | `recoup-royalty-audit` | Audits statements, normalized ledgers, PRO/MLC issues, gross-to-net support. |
 | `recoup-seller-prep` | Creates cleanup worklists that reduce avoidable valuation discounts before going to market. |
-| `recoup-financing-underwrite` | Builds lender-ready collateral and cash-flow diligence. |
+| `recoup-financing-underwrite` | Builds lender-ready collateral and cash-flow review. |
 | `recoup-ic-memo-package` | Assembles IC memos, seller cleanup reports, financing packs, and final outputs. |
-| `recoup-post-close-admin` | Turns diligence data into transfer, registration, and income-monitoring worklists. |
+| `recoup-post-close-admin` | Turns deal-review data into transfer, registration, and income-monitoring worklists. |
 
-## What you get when `/recoup-catalog-diligence` finishes
+## What you get when `/recoup-catalog-deal` finishes
 
 ```text
 deals/{deal-id}/
@@ -171,7 +171,7 @@ The trust model has two complementary layers:
 Royalty ledgers, valuation summaries, NPS/NLS bridges, concentration
 analyses, findings, and the evidence ledger are all structured JSON
 or CSV. They go through validators
-(`scripts/run-diligence-checks.py`) that confirm shape, evidence
+(`scripts/run-deal-checks.py`) that confirm shape, evidence
 references, cross-artifact consistency, and findings-to-evidence
 traceability. These are the source of truth.
 
@@ -201,12 +201,12 @@ narrative structure, depth. After the agent writes
 
 - **Stop hook (prompt-based, two gates)**.
   - Gate A (completion claims) — when the agent claims a package is
-    "ready", the hook verifies that `run-diligence-checks.py` ran
+    "ready", the hook verifies that `run-deal-checks.py` ran
     cleanly, the readiness check isn't `blocked`, `assumptions.yaml`
     and `evidence-ledger.json` exist, findings aren't silently
     dropped, and memo claims trace to evidence.
   - Gate B (mid-workflow progress) — when the user launched
-    `/recoup-catalog-diligence` or `/recoup-catalog-demo`, the hook blocks the
+    `/recoup-catalog-deal` or `/recoup-catalog-demo`, the hook blocks the
     agent from stopping until `DASHBOARD.html` exists **and**
     `validate-dashboard.py` returned `status: ok`. This is what
     prevents the agent from quitting after Phase 2 with "want me to
@@ -244,7 +244,7 @@ python3 scripts/test-validate-workspace-consistency.py
 python3 scripts/test-build-manual-review-queue.py
 python3 scripts/test-calculate-concentration.py
 python3 scripts/test-dataroom-hygiene-scan.py
-python3 scripts/test-diligence-readiness.py
+python3 scripts/test-deal-readiness.py
 python3 scripts/test-helpers.py
 python3 scripts/test-validate-dashboard.py
 python3 scripts/test-auto-column-map.py
@@ -253,20 +253,20 @@ python3 scripts/test-auto-column-map.py
 Operate a real deal workspace with:
 
 ```bash
-python3 scripts/run-diligence-checks.py deals/{deal-id}
-python3 scripts/build-diligence-dashboard.py deals/{deal-id}      # internal readiness
-python3 scripts/validate-dashboard.py deals/{deal-id}             # check agent's DASHBOARD.html
+python3 scripts/run-deal-checks.py deals/{deal-id}
+python3 scripts/build-deal-readiness.py deals/{deal-id}      # internal readiness
+python3 scripts/validate-dashboard.py deals/{deal-id}        # check agent's DASHBOARD.html
 ```
 
 ## Structure
 
 ```text
-recoup-catalog-diligence/
+recoup-catalog-deals/
 ├── .claude-plugin/plugin.json
 ├── .codex-plugin/plugin.json
 ├── .cursor-plugin/plugin.json
 ├── agents/                     # Specialist sub-agents (QC, rights, royalty, valuation, metadata)
-├── commands/                   # Slash commands — start with /recoup-catalog-diligence
+├── commands/                   # Slash commands — start with /recoup-catalog-deal
 ├── evals/                      # Behavioral eval scenarios
 ├── fixtures/
 │   ├── demo-data-room/         # Synthetic catalog used by /recoup-catalog-demo
@@ -283,8 +283,9 @@ recoup-catalog-diligence/
 ## About
 
 [Recoup](https://recoupable.com) builds AI-powered infrastructure for
-music operators.
+music operators. **Recoup Catalog Deals** is one product in the broader
+**Recoup Catalog Intelligence** product line.
 
-- Plugin: `recoup-catalog-diligence`
-- Repository: <https://github.com/recoupable/recoup-catalog-diligence>
+- Plugin: `recoup-catalog-deals`
+- Repository: <https://github.com/recoupable/recoup-catalog-deals>
 - Support: <support@recoupable.com>

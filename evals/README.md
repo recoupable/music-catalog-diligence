@@ -1,6 +1,6 @@
 # Music catalogs evals
 
-Use these scenarios to test whether the plugin improves diligence behavior.
+Use these scenarios to test whether the plugin improves deal-review behavior.
 
 ## Metrics
 
@@ -10,7 +10,7 @@ Use these scenarios to test whether the plugin improves diligence behavior.
 - Financial tie-out tolerance.
 - Missing-document detection.
 - Memo caveat quality.
-- Time to first diligence memo.
+- Time to first deal memo.
 
 ## Scenarios
 

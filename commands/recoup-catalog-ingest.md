@@ -7,7 +7,7 @@ description: Normalize a catalog data room into auditable catalog, royalty, righ
 
 Use the `recoup-catalog-ingest` skill.
 
-> **Most users should run `/recoup-catalog-diligence` instead** — that command
+> **Most users should run `/recoup-catalog-deal` instead** — that command
 > chains kickoff → ingest → analysis → dashboard → memo without stopping.
 > This command is the ingest phase only, for analysts who already have a
 > workspace and want to re-normalize after dropping new files into
@@ -71,7 +71,7 @@ Use the `recoup-catalog-ingest` skill.
    `python3 scripts/validate-normalized-ledger.py deals/{deal-id}/normalized/royalty-ledger.csv`.
 8. Run the full readiness check (workspace, ledger, evidence ledger,
    findings-to-evidence traceability, cross-artifact consistency):
-   `python3 scripts/run-diligence-checks.py deals/{deal-id}`.
+   `python3 scripts/run-deal-checks.py deals/{deal-id}`.
 9. **Optional**: build a preview dashboard so the user can see what
    ingest produced before analysis runs. Use the `recoup-catalog-dashboard`
    skill to author `deals/{deal-id}/DASHBOARD.html` from the partial
@@ -100,6 +100,6 @@ Optional preview: deals/{deal-id}/DASHBOARD.html (built only if step 9 ran)
 - Do not produce a valuation unless ingest artifacts exist and the user
   explicitly asks to continue. Ingest's job is to make the data
   trustworthy, not value the catalog.
-- Do not mark ingest complete while `run-diligence-checks.py` still
+- Do not mark ingest complete while `run-deal-checks.py` still
   reports failures.
-- When in doubt, run `/recoup-catalog-diligence` to drive end-to-end instead.
+- When in doubt, run `/recoup-catalog-deal` to drive end-to-end instead.

@@ -1,6 +1,6 @@
 ---
 name: recoup-catalog-dashboard
-description: Use when building, refreshing, or improving the customer-facing executive dashboard (DASHBOARD.html) for a music catalog deal. Trigger on "build the dashboard", "render the dashboard", "create the executive dashboard", "refresh DASHBOARD.html", or any phase of /recoup-catalog-diligence that produces the customer's read-the-deal artifact.
+description: Use when building, refreshing, or improving the customer-facing executive dashboard (DASHBOARD.html) for a music catalog deal. Trigger on "build the dashboard", "render the dashboard", "create the executive dashboard", "refresh DASHBOARD.html", or any phase of /recoup-catalog-deal that produces the customer's read-the-deal artifact.
 ---
 
 # Catalog Dashboard
@@ -57,7 +57,7 @@ structure is yours.
 - Top-N catalog assets — from `workpapers/concentration-analysis.json`
   or aggregated from the ledger.
 - Quarterly or monthly trend — aggregated from the ledger.
-- Diligence asks — from `findings/missing-files.md`.
+- Open seller requests — from `findings/missing-files.md`.
 
 If a workpaper does not exist, render a placeholder that says so, or
 leave the section out and explain in the narrative.
@@ -141,7 +141,7 @@ passes.
 | `deals/{deal-id}/assumptions.yaml` | `deal.deal_name`, workflow type, valuation_date, currency, materiality thresholds. |
 | `deals/{deal-id}/normalized/royalty-ledger.csv` | Every normalized statement line. Aggregate freely. |
 | `deals/{deal-id}/findings/findings.json` | Every structured finding with severity and status. |
-| `deals/{deal-id}/findings/missing-files.md` | Diligence asks for the seller. |
+| `deals/{deal-id}/findings/missing-files.md` | Open requests for the seller. |
 | `deals/{deal-id}/evidence-ledger.json` | Evidence entries to cite via `data-evidence`. |
 | `deals/{deal-id}/workpapers/valuation-summary.json` | Normalized NPS/NLS, scenario brackets. |
 | `deals/{deal-id}/workpapers/nps-bridge.json` | Reported→normalized NPS waterfall. |

@@ -7,7 +7,7 @@ description: Author or refresh the customer-facing DASHBOARD.html for a deal wor
 
 Use the `recoup-catalog-dashboard` skill.
 
-> **Most users should run `/recoup-catalog-diligence` instead** — that
+> **Most users should run `/recoup-catalog-deal` instead** — that
 > command runs end-to-end and includes the dashboard as Phase 5. This
 > command is the dashboard phase only, for analysts who already have
 > workpapers and want to refresh `DASHBOARD.html` after editing
@@ -26,7 +26,7 @@ Use the `recoup-catalog-dashboard` skill.
    section gracefully — but warn the user about which sections will
    read as "data not yet computed."
 
-2. Run `python3 scripts/run-diligence-checks.py deals/{deal-id}`
+2. Run `python3 scripts/run-deal-checks.py deals/{deal-id}`
    first. The dashboard reflects whatever the workpapers say, so the
    validators must pass before the dashboard is trustworthy.
 

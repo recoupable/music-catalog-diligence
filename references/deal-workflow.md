@@ -1,13 +1,12 @@
-# Diligence workflow
+# Deal workflow
 
 Music catalog deals move quickly only when the team can turn messy source files
 into traceable underwriting evidence. Use this workflow as the end-to-end map
-for buy-side acquisition diligence, seller preparation, and financing
-underwriting.
+for buy-side acquisition, seller preparation, and financing underwriting.
 
 ## 1. Sourcing and first screen
 
-The first screen decides whether a catalog is worth diligence time. Inputs are
+The first screen decides whether a catalog is worth deal-review time. Inputs are
 usually a teaser, seller summary, track list, headline royalty history, and
 high-level streaming or social data.
 
@@ -27,7 +26,7 @@ High-value checks:
 - Treat recent spikes as hypotheses, not underwritable cash flow.
 
 Plugin opportunity: produce a preliminary deal screen with asset type, missing
-data, likely diligence risks, and a caveated value range.
+data, likely deal-review risks, and a caveated value range.
 
 ## 2. Data room request and setup
 
@@ -182,7 +181,7 @@ Core outputs:
 - Risk register and holdback recommendation
 
 Plugin opportunity: refresh valuation exhibits from the same evidence ledger
-used for diligence findings.
+used for deal-review findings.
 
 ## 9. IC memo and bid recommendation
 
@@ -196,7 +195,7 @@ High-value sections:
 - Asset and rights summary
 - Revenue bridge
 - Concentration and sensitivity
-- Diligence exceptions
+- Deal-review exceptions
 - Missing-document list
 - Recommended price adjustments, escrows, or holdbacks
 
@@ -205,8 +204,9 @@ retyping analysis from scattered workpapers.
 
 ## 10. Close and post-close administration
 
-Closing can fail when schedules do not match diligence. Post-close income can
-leak when registrations and royalty systems are not transferred cleanly.
+Closing can fail when schedules do not match deal-review findings. Post-close
+income can leak when registrations and royalty systems are not transferred
+cleanly.
 
 High-value checks:
 

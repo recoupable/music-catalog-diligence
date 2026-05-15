@@ -7,7 +7,7 @@ description: Assemble the executive HTML dashboard plus an IC memo, seller clean
 
 Use the `recoup-ic-memo-package` skill.
 
-> **Most users should run `/recoup-catalog-diligence` instead** — that command
+> **Most users should run `/recoup-catalog-deal` instead** — that command
 > chains kickoff → ingest → analysis → dashboard → memo. This command is
 > the packaging phase only, for analysts who already have analysis
 > workpapers and want to refine the deliverables.
@@ -16,7 +16,7 @@ Use the `recoup-ic-memo-package` skill.
 
 1. Confirm package type: IC memo, seller cleanup report, financing pack,
    or post-close admin plan.
-2. Run `python3 scripts/run-diligence-checks.py deals/{deal-id}` first.
+2. Run `python3 scripts/run-deal-checks.py deals/{deal-id}` first.
    Validator failures must be cured or explicitly disclosed before
    packaging.
 3. Use the relevant template under `templates/deal-workspace/memos/`.
@@ -29,13 +29,13 @@ Use the `recoup-ic-memo-package` skill.
    `deals/{deal-id}/DASHBOARD.html`, then validate:
    `python3 scripts/validate-dashboard.py deals/{deal-id}`. If the
    validator returns errors, fix the dashboard and re-run.
-6. `python3 scripts/build-diligence-dashboard.py deals/{deal-id}` for
+6. `python3 scripts/build-deal-readiness.py deals/{deal-id}` for
    the internal readiness check (writes `workpapers/readiness-check.md`
    — analyst-facing only, not for the customer).
 
 ## Final landing card
 
-End with the same shape as `/recoup-catalog-diligence` so the user has a single,
+End with the same shape as `/recoup-catalog-deal` so the user has a single,
 predictable closing message:
 
 ```text
@@ -57,9 +57,9 @@ Then if you want detail:
 
 ## Rules
 
-- Do not generate a polished package without disclosing missing diligence.
-- Do not mark the package "ready" if `run-diligence-checks.py` fails or
-  the markdown dashboard shows `blocked`. The Stop hook will block the
+- Do not generate a polished package without disclosing open deal issues.
+- Do not mark the package "ready" if `run-deal-checks.py` fails or
+  the readiness check shows `blocked`. The Stop hook will block the
   agent from finishing in that state.
 - Do not bury critical findings in appendices. They go in the executive
   summary and on the executive dashboard.

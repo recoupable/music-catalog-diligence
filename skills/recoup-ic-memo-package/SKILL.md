@@ -1,6 +1,6 @@
 ---
 name: recoup-ic-memo-package
-description: Use when creating an investment committee memo, buyer diligence package, bid recommendation, seller cleanup report, financing pack, or final catalog deal summary. Triggers include "IC memo", "investment memo", "deal package", "bid recommendation", "catalog memo", "prepare the diligence package", or "package this catalog analysis".
+description: Use when creating an investment committee memo, buyer deal-review package, bid recommendation, seller cleanup report, financing pack, or final catalog deal summary. Triggers include "IC memo", "investment memo", "deal package", "bid recommendation", "catalog memo", "prepare the deal package", or "package this catalog analysis".
 ---
 
 # IC Memo Package
@@ -17,7 +17,7 @@ The memo should be readable, but it must not outrun the evidence.
    from workpapers.
 4. Separate evidence-backed facts from assumptions and open items.
 5. Use the relevant template under `templates/deal-workspace/memos/`.
-6. Run or request diligence QC before presenting final recommendations.
+6. Run or request deal QC before presenting final recommendations.
 
 ## Required sections
 
@@ -27,7 +27,7 @@ The memo should be readable, but it must not outrun the evidence.
 - Normalized cash-flow bridge.
 - Valuation range or readiness score.
 - Key risks and valuation treatment.
-- Open diligence.
+- Open deal-review items.
 - Recommended next action.
 - Evidence references.
 
