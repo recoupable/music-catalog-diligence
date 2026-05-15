@@ -7,7 +7,7 @@
     "email": "support@recoupable.com"
   },
   "homepage": "https://recoupable.com",
-  "repository": "https://github.com/recoupable/recoup-catalog-deals",
+  "repository": "https://github.com/recoupable/catalog-deals-plugin",
   "license": "Apache-2.0",
   "keywords": [
     "music",

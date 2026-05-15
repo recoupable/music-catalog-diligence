@@ -15,7 +15,7 @@ memos. The whole thing is driven by a single command —
 ### Claude Code (CLI)
 
 ```bash
-claude plugin install https://github.com/recoupable/recoup-catalog-deals
+claude plugin install https://github.com/recoupable/catalog-deals-plugin
 ```
 
 Then **restart your Claude Code session** so `hooks/hooks.json` loads.
@@ -24,7 +24,7 @@ Then **restart your Claude Code session** so `hooks/hooks.json` loads.
 
 1. Open the plugin marketplace (puzzle-piece icon in the sidebar).
 2. Click **Add custom plugin** and paste:
-   `https://github.com/recoupable/recoup-catalog-deals`
+   `https://github.com/recoupable/catalog-deals-plugin`
 3. Approve the requested tool permissions (`Read`, `Write`, `Bash` —
    needed to run the validator scripts).
 4. **Restart the Cowork session** so the PreToolUse and Stop hooks
@@ -287,5 +287,5 @@ music operators. **Recoup Catalog Deals** is one product in the broader
 **Recoup Catalog Intelligence** product line.
 
 - Plugin: `recoup-catalog-deals`
-- Repository: <https://github.com/recoupable/recoup-catalog-deals>
+- Repository: <https://github.com/recoupable/catalog-deals-plugin>
 - Support: <support@recoupable.com>
