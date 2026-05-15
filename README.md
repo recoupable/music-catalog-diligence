@@ -56,42 +56,52 @@ pip3 install -r requirements.txt   # pdfplumber, openpyxl
 
 You can skip this if your data room is CSV/TSV only.
 
-## Getting started — the 60-second AHA moment
+## Getting started
 
-Once installed, run:
+After installing, open a new chat in Claude and try:
 
-```text
-/recoup-catalog-demo
-```
+> **Let's analyze a catalog with /recoup-catalog-diligence**
 
-That copies the bundled synthetic data room into
-`deals/demo-catalog/source/` and runs the full diligence flow
-end-to-end. When it finishes you will get a single line pointing at:
+Claude will ask what kind of deal this is (buy-side, seller-prep, or
+financing) and what to call it. Drag your seller's files into the
+chat — royalty statements, contracts, metadata exports, even messy
+ones. Claude runs the full workflow end-to-end: scaffolds the
+workspace, normalizes the royalties, flags rights issues, builds an
+interactive dashboard, and drafts an IC memo.
 
-```text
-deals/demo-catalog/DASHBOARD.html
-```
-
-Open that file in any browser. The dashboard is **authored by the
-agent** for this specific catalog — it picks the layout, charts, and
-narrative based on the deal's story. The shape adapts to what's
-material: a concentration-driven catalog reads differently than a
-recoupment-cliff catalog. Agents in May 2026 build remarkable
-dashboards when given good direction; the
-`skills/recoup-catalog-dashboard/SKILL.md` file is that direction.
-
-When you're ready for your real catalog:
+When it finishes, open:
 
 ```text
-/recoup-catalog-diligence
+deals/{deal-id}/DASHBOARD.html
 ```
+
+The dashboard is **authored by the agent** for your specific
+catalog — layout, charts, and narrative shaped by the deal's story.
+A concentration-driven catalog reads differently than a recoupment-
+cliff catalog. Agents in May 2026 build remarkable dashboards when
+given good direction; the `skills/recoup-catalog-dashboard/SKILL.md`
+file is that direction.
+
+When you're ready to share the deal with a buyer, IC, or lender:
+
+```text
+/recoup-catalog-report
+```
+
+That exports a single PDF you can attach to an email.
+
+### No catalog handy? Try the demo
+
+To see what the plugin produces before pointing it at a real deal — or
+to show a teammate — run `/recoup-catalog-demo`. It runs the full
+workflow against a bundled synthetic catalog.
 
 ## Commands
 
 | Command | When to use it |
 | ------- | -------------- |
 | `/recoup-catalog-diligence` | **Default.** End-to-end run from kickoff to dashboard and IC memo, no stops between phases. |
-| `/recoup-catalog-demo` | First-run sanity check using bundled synthetic data. |
+| `/recoup-catalog-demo` | Optional: runs the full workflow on a bundled synthetic catalog. Useful for showing a teammate what the plugin produces. |
 | `/recoup-catalog-kickoff` | Power-user: scaffold the workspace and stop. |
 | `/recoup-catalog-ingest` | Power-user: re-normalize after dropping new files into `source/`. Auto-recovers when seller headers don't match a provider profile. |
 | `/recoup-catalog-analyze` | Power-user: refresh analysis workpapers (NPS/NLS bridge, valuation summary). |
@@ -100,8 +110,9 @@ When you're ready for your real catalog:
 | `/recoup-catalog-package` | Power-user: refine the IC memo / financing pack / seller cleanup report. |
 | `/recoup-catalog-report` | Export the validated dashboard + memo as a single shareable PDF you can email (`deals/{deal-id}/REPORT.pdf`). |
 
-If you're new to the plugin, ignore the power-user commands. Use
-`/recoup-catalog-demo` once, then `/recoup-catalog-diligence` for real work.
+If you're new to the plugin, ignore the power-user commands and start
+with `/recoup-catalog-diligence`. Try `/recoup-catalog-demo` only if
+you want to see the output before pointing it at a real deal.
 
 ## Skills
 
