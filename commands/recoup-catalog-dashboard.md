@@ -3,6 +3,9 @@ name: recoup-catalog-dashboard
 description: Author or refresh the customer-facing DASHBOARD.html for a deal workspace. Standalone shortcut to the recoup-catalog-dashboard skill — useful after editing workpapers, findings, or recommendations.
 ---
 
+> **Note:** This command was migrated to `skills/recoup-catalog-dashboard/SKILL.md` in v0.3.0 per Anthropic's official guidance that `commands/*.md` is legacy in favor of `skills/<name>/SKILL.md`. Both layouts are loaded identically by Claude Code; this file is preserved for backwards compatibility. New work should edit the SKILL.md. The legacy command file will be removed in a future release.
+
+
 # Catalog Dashboard
 
 Use the `recoup-catalog-dashboard` skill.

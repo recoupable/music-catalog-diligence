@@ -1,10 +1,9 @@
 ---
 name: recoup-catalog-analyze
-description: Run normalized-catalog analysis (royalties, risk, concentration, valuation scenarios). For full end-to-end runs prefer /recoup-catalog-deal.
+description: Run normalized-catalog analysis (royalties, risk, concentration, valuation scenarios) — Phases 3 and 4 only. Use whenever the user types `/recoup-catalog-analyze`, says "refresh the analysis", "rerun the valuation analysis", "update the workpapers", or wants to refresh the analysis phase after editing ingest output or assumptions. For full end-to-end runs prefer /recoup-catalog-deal.
+argument-hint: [deal-id]
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep, Task]
 ---
-
-> **Note:** This command was migrated to `skills/recoup-catalog-analyze/SKILL.md` in v0.3.0 per Anthropic's official guidance that `commands/*.md` is legacy in favor of `skills/<name>/SKILL.md`. Both layouts are loaded identically by Claude Code; this file is preserved for backwards compatibility. New work should edit the SKILL.md. The legacy command file will be removed in a future release.
-
 
 # Catalog Analyze
 

@@ -1,10 +1,9 @@
 ---
 name: recoup-catalog-qc
-description: Run deal-review quality control before a catalog package is shared. Refreshes the executive dashboard with the latest findings.
+description: Run deal-review quality control before a catalog package is shared — Phase 6 QC only. Refreshes the executive dashboard with the latest findings. Use whenever the user types `/recoup-catalog-qc`, says "QC the deal", "run quality control on this deal", "check before sharing", "is this ready to send", or wants a pre-share QC gate after editing findings or memos. For full end-to-end runs prefer /recoup-catalog-deal.
+argument-hint: [deal-id]
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep, Task]
 ---
-
-> **Note:** This command was migrated to `skills/recoup-catalog-qc/SKILL.md` in v0.3.0 per Anthropic's official guidance that `commands/*.md` is legacy in favor of `skills/<name>/SKILL.md`. Both layouts are loaded identically by Claude Code; this file is preserved for backwards compatibility. New work should edit the SKILL.md. The legacy command file will be removed in a future release.
-
 
 # Catalog QC
 

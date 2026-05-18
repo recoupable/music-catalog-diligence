@@ -108,6 +108,8 @@ If you're new to the plugin, ignore the power-user commands and start
 with `/recoup-catalog-deal`. Try `/recoup-catalog-demo` only if
 you want to see the output before pointing it at a real deal.
 
+> **v0.3.0 spec migration:** The 9 slash commands above were migrated from `commands/*.md` files to `skills/<command-name>/SKILL.md` files per Anthropic's newer skills-not-commands convention (the official `claude-plugins-official` example-plugin declares the `commands/*.md` layout legacy). Both layouts exist in this release for back-compat; the legacy command files will be removed in a future release. Three of the new skill folders (`recoup-catalog-dashboard`, `recoup-catalog-ingest`, `recoup-catalog-report`) share names with existing model-invoked skills and were resolved by augmenting those existing skills rather than creating parallel files.
+
 ## Skills
 
 Loaded automatically by description-matching when the agent recognizes

@@ -3,6 +3,9 @@ name: recoup-catalog-ingest
 description: Normalize a catalog data room into auditable catalog, royalty, rights, and evidence artifacts. Auto-recovers when seller files use non-canonical headers.
 ---
 
+> **Note:** This command was migrated to `skills/recoup-catalog-ingest/SKILL.md` in v0.3.0 per Anthropic's official guidance that `commands/*.md` is legacy in favor of `skills/<name>/SKILL.md`. Both layouts are loaded identically by Claude Code; this file is preserved for backwards compatibility. New work should edit the SKILL.md. The legacy command file will be removed in a future release.
+
+
 # Catalog Ingest
 
 Use the `recoup-catalog-ingest` skill.

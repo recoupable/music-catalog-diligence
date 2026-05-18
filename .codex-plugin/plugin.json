@@ -1,6 +1,6 @@
 {
   "name": "recoup-catalogs-plugin",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Review royalties, rights, valuation, and deal materials for music catalog transactions.",
   "author": {
     "name": "Recoup",
@@ -32,7 +32,10 @@
     "longDescription": "Turn messy catalog data rooms into source-cited deal packages with normalized royalty data, rights exceptions, valuation workpapers, and buyer, seller, or lender-ready memos.",
     "developerName": "Recoup",
     "category": "Music",
-    "capabilities": ["Read", "Write"],
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
     "websiteURL": "https://recoupable.com"
   }
 }

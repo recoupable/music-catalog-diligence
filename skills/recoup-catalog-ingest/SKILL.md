@@ -1,6 +1,8 @@
 ---
 name: recoup-catalog-ingest
 description: Use when ingesting a music catalog data room, royalty statements, rights files, metadata exports, or messy catalog spreadsheets for a deal review. Triggers include "catalog data room", "clean royalty statements", "normalize royalties", "music rights review", "catalog ingest", "merge catalog metadata", "prepare this catalog for valuation", or seller files containing ISRCs, ISWCs, splits, PRO statements, distributor reports, contracts, recoupment schedules, or YouTube Content ID reports.
+argument-hint: [deal-id]
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep]
 ---
 
 # Catalog Ingest

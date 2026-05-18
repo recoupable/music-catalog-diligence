@@ -1,14 +1,12 @@
 ---
 name: recoup-catalog-demo
-description: Run /recoup-catalog-deal end-to-end on the bundled synthetic catalog so a first-time user can see an executive dashboard within ~60 seconds.
+description: Run /recoup-catalog-deal end-to-end on the bundled synthetic catalog so a first-time user can see an executive dashboard within ~60 seconds. Use whenever the user types `/recoup-catalog-demo`, says "show me the demo", "run the catalog demo", "let me see what this plugin produces", or asks for a sample / dry-run catalog deal against bundled data.
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, Task]
 ---
-
-> **Note:** This command was migrated to `skills/recoup-catalog-demo/SKILL.md` in v0.3.0 per Anthropic's official guidance that `commands/*.md` is legacy in favor of `skills/<name>/SKILL.md`. Both layouts are loaded identically by Claude Code; this file is preserved for backwards compatibility. New work should edit the SKILL.md. The legacy command file will be removed in a future release.
-
 
 # Catalog Demo
 
-Use this command on first install to confirm the plugin works end-to-end
+Use this skill on first install to confirm the plugin works end-to-end
 on a known-good data room before pointing it at the customer's real
 files.
 
@@ -91,7 +89,7 @@ YAML
 ```
 
 After scaffolding, run `/recoup-catalog-deal` end-to-end exactly as
-specified in `commands/recoup-catalog-deal.md`. The demo data is
+specified in `skills/recoup-catalog-deal/SKILL.md`. The demo data is
 deliberately shaped to produce these AHA moments without intervention:
 
 - **Ingest coverage line**: roughly "5 of 8 statement files contributed

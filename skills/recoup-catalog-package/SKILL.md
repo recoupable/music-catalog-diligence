@@ -1,10 +1,9 @@
 ---
 name: recoup-catalog-package
-description: Assemble the executive HTML dashboard plus an IC memo, seller cleanup report, financing pack, or post-close administration package.
+description: Assemble the executive HTML dashboard plus an IC memo, seller cleanup report, financing pack, or post-close administration package — Phases 5–6 only. Use whenever the user types `/recoup-catalog-package`, says "build the IC memo", "package this deal", "draft the seller cleanup report", "assemble the financing pack", or "build the post-close admin plan". For full end-to-end runs prefer /recoup-catalog-deal.
+argument-hint: [deal-id] [--package ic-memo|seller-cleanup|financing-pack|post-close-admin]
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep, Task]
 ---
-
-> **Note:** This command was migrated to `skills/recoup-catalog-package/SKILL.md` in v0.3.0 per Anthropic's official guidance that `commands/*.md` is legacy in favor of `skills/<name>/SKILL.md`. Both layouts are loaded identically by Claude Code; this file is preserved for backwards compatibility. New work should edit the SKILL.md. The legacy command file will be removed in a future release.
-
 
 # Catalog Package
 
