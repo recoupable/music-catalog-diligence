@@ -1,10 +1,9 @@
 ---
 name: recoup-catalog-kickoff
-description: Set up a music catalog deal workspace and first deal-review request list. For full end-to-end runs prefer /recoup-catalog-deal.
+description: Set up a music catalog deal workspace and first deal-review request list — Phase 1 only. Use whenever the user types `/recoup-catalog-kickoff`, says "start a new catalog deal", "scaffold a workspace", "set up a data room review", or wants to set up a deal workspace without running the full end-to-end pipeline. For full end-to-end runs prefer /recoup-catalog-deal.
+argument-hint: [deal-id] [--workflow buy-side|recoup-seller-prep|financing]
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion]
 ---
-
-> **Note:** This command was migrated to `skills/recoup-catalog-kickoff/SKILL.md` in v0.3.0 per Anthropic's official guidance that `commands/*.md` is legacy in favor of `skills/<name>/SKILL.md`. Both layouts are loaded identically by Claude Code; this file is preserved for backwards compatibility. New work should edit the SKILL.md. The legacy command file will be removed in a future release.
-
 
 # Catalog Kickoff
 

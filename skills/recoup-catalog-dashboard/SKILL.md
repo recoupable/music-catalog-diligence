@@ -1,6 +1,8 @@
 ---
 name: recoup-catalog-dashboard
 description: Use when building, refreshing, or improving the customer-facing executive dashboard (DASHBOARD.html) for a music catalog deal. Trigger on "build the dashboard", "render the dashboard", "create the executive dashboard", "refresh DASHBOARD.html", or any phase of /recoup-catalog-deal that produces the customer's read-the-deal artifact.
+argument-hint: [deal-id]
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep]
 ---
 
 # Catalog Dashboard

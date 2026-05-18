@@ -1,6 +1,8 @@
 ---
 name: recoup-catalog-report
 description: Use when the user wants to turn a deal's dashboard, memos, and workpapers into a single shareable, emailable PDF report. Trigger on "build the PDF report", "export the report", "make a PDF I can email", "share this deal", "PDF version of the dashboard", "buyer-ready PDF", "IC-ready PDF", "financing pack PDF", or any request to package a catalog deal for distribution.
+argument-hint: [deal-id] [--package ic-memo|seller-cleanup|financing-pack|post-close-admin]
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep]
 ---
 
 # Catalog Report (PDF)

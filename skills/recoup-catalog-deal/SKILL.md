@@ -1,10 +1,9 @@
 ---
 name: recoup-catalog-deal
-description: One-command end-to-end catalog deal review. Scaffolds the workspace, normalizes the data room, runs analysis, builds an agent-authored DASHBOARD.html, validates it, and drafts the IC memo without stopping for permission between phases.
+description: One-command end-to-end music catalog deal review. Use whenever the user types `/recoup-catalog-deal`, says "review this catalog", "analyze this music catalog deal", "value this catalog", "do diligence on this deal", "underwrite this catalog", or asks for a full catalog acquisition / seller-prep / financing review. Scaffolds the workspace, normalizes the data room, runs analysis, builds an agent-authored DASHBOARD.html, validates it, and drafts the IC memo without stopping for permission between phases. The default front door for the recoup-catalogs-plugin.
+argument-hint: [deal-id] [--workflow buy-side|recoup-seller-prep|financing]
+allowed-tools: [Bash, Read, Write, Edit, Glob, Grep, AskUserQuestion, Task]
 ---
-
-> **Note:** This command was migrated to `skills/recoup-catalog-deal/SKILL.md` in v0.3.0 per Anthropic's official guidance that `commands/*.md` is legacy in favor of `skills/<name>/SKILL.md`. Both layouts are loaded identically by Claude Code; this file is preserved for backwards compatibility. New work should edit the SKILL.md. The legacy command file will be removed in a future release.
-
 
 # Catalog Deal
 

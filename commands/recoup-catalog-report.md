@@ -3,6 +3,9 @@ name: recoup-catalog-report
 description: Export the deal as a single shareable, emailable PDF. Converts the validated DASHBOARD.html (and supporting memos / workpapers) into deals/{deal-id}/REPORT.pdf. Use after the deal review finishes when you want to forward it to an IC, lender, buyer, seller, or counsel.
 ---
 
+> **Note:** This command was migrated to `skills/recoup-catalog-report/SKILL.md` in v0.3.0 per Anthropic's official guidance that `commands/*.md` is legacy in favor of `skills/<name>/SKILL.md`. Both layouts are loaded identically by Claude Code; this file is preserved for backwards compatibility. New work should edit the SKILL.md. The legacy command file will be removed in a future release.
+
+
 # Catalog Report (PDF)
 
 Use the `recoup-catalog-report` skill.
